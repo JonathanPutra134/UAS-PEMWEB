@@ -23,7 +23,7 @@
        
         <a class="btn btn-primary" href="<?php echo base_url("index.php/Home/Login");?>">Login</a>
         
-      
+        <button type="submit">yayayayayayayayaya</button>
      
         <a class="btn btn-primary" href="<?php echo base_url("index.php/Home/Register");?>">Register</a>
         <a class="btn btn-primary" href="<?php echo base_url("index.php/Home/logout");?>">Logout</a>

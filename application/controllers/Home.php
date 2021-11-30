@@ -23,13 +23,7 @@ class Home extends CI_Controller{
         session_unset();
         redirect('home/login');
     }
-    public function admin() {
-        $data['user'] = $this->Model->ShowUser();
-        $data['js'] = $this->load->view('include/javascript.php', NULL, TRUE);
-        $data['css'] = $this->load->view('include/css.php', NULL, TRUE);
-        $data['header'] = $this->load->view('pages/header.php', NULL, TRUE);
-        $this->load->view('pages/admin.php', $data);
-    }
+   
 
     public function Login(){
         if(isset($_SESSION['loggedInAccount'])) {
@@ -44,11 +38,19 @@ class Home extends CI_Controller{
         if(!$this->form_validation->run()) { //gagal login, data salah
             $this->load->view('pages/login.php', $data);
         } else { //form validation berhasil
-            if($this->Model->loginAuthentication($this->input->post('Email'), $this->input->post("Password"))) {
-                redirect("home/admin");
-            } else {
-                redirect("home/login");
-            }
+            if($this->Model->loginAuthentication($this->input->post('Email'), $this->input->post("Password")))
+                {
+                 if($_SESSION['loggedInAccount']['Role'] == "admin") {
+                    redirect("Admin");
+                 }else if($_SESSION['loggedInAccount']['Role'] == "management") {
+                    redirect("Management");
+                 }else {
+                    redirect("User");
+                 }
+               } else 
+                 {
+                redirect("Home/login");
+                 }
         }
     }
     public function Register(){
@@ -88,5 +90,6 @@ class Home extends CI_Controller{
 
     
 }
+
     
 }

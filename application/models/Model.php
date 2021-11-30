@@ -32,7 +32,7 @@
       }
     }
 
-		public function AddData()
+		public function AddData()//UNTUK REGISTER
 		{
 		  $this->db->trans_begin();
           $config['upload_path'] = './assets/images';
@@ -70,11 +70,50 @@
 			 
 		}
 
-		 public function ShowUser(){
+		 public function ShowUser(){ //SHOW USER DI ADMIN
          $query = $this->db->query("SELECT * FROM user");
         return $query->result_array();
      }
+     
+
+
+		 public function AddFacilities(){//UNTUK ADD FASILITAS
 		
+		  $this->db->trans_begin();
+          $config['upload_path'] = './assets/images';
+		      $config['allowed_types'] = 'jpg|png|jpeg';
+		      $config['max_size'] = '5000';
+          $this->load->library('upload', $config);
+          $status = $this->upload->do_upload("Image");
+         
+          $Name = $this->input->post('Name');
+          $Description = $this->input->post('Description');
+         
+          $Image = $this->upload->data();
+          $Image = "assets/images/" . $Image['file_name']; 
+    
+          $query = $this->db->insert("facilities", [
+            "Name" => $Name,
+            "Description" => $Description,
+            "Image" => $Image
+        
+          ]);
+     
+          $this->db->trans_complete();
+
+          if ($this->db->trans_status() === FALSE) {
+              $this->db->trans_rollback();
+              echo "gagal";
+          } else {
+              return $query;
+                 }
+			
+			 
+		}
+    public function ShowFacilities(){ //SHOW Facilities di admin
+         $query = $this->db->query("SELECT * FROM facilities");
+        return $query->result_array();
+     }
 	
 	}
 

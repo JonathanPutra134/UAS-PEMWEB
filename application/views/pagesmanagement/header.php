@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <div class="navbar-header" style="padding:0 5%">
             <a class="navbar-brand" href="">Facilities Booking</a>
-            <a class=" navbar-brand" href="<?php echo base_url("index.php/Admin")?>">Users</a>
+       
             <a class="navbar-brand" href="<?php echo base_url("index.php/Admin/Facilities")?>">Facilities</a>
             <a class="navbar-brand" href="">Request</a>
         </div>

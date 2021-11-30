@@ -8,16 +8,22 @@
         <title>UAS</title>
 </head>
 <body>
-       <?php echo $header ?>
+       <?php 
+       echo $header; 
+
+       ?>
+       <a  href="<?php echo base_url("index.php/Management/AddFacilitiesPage");?>" class="btn btn-primary">Add</a>
+
+
        <table id="tblMovie" class="table table-striped table-bordered" cellspacing="0" width="100%">
 	    <thead>
 		<tr>
 
 			<th> # </th>
+			<th> Image </th>
 			<th> Name </th>
-			<th> Email </th>
-			<th> Role </th>
 			<th> Operation </th>
+		
 		</tr>
 	</thead>
 	<tbody>
@@ -25,20 +31,20 @@
             $count = 1;
 			
 		
-        	foreach($user as $data)
+        	foreach($facilities as $data)
 			{
 				$base_url = base_url();
-                $id = $data['id_user'];
+                $id = $data['id_facilities'];
 				echo "<tr>";
 					echo "<td>" .$count++."</td>";
+				    echo "<td><img src=".base_url($data['Image'])." height='200px' width='200px' alt='image'></td>";
 					echo "<td>" .$data['Name'] ."</td>";
-					echo "<td>" .$data['Email'] ."</td>";
-                    echo "<td>" .$data['Role'] ."</td>";
+                   
 			
 				
 				//BUTTON DELETE & EDIT
 					echo "<td>";
-						echo "<a href='".base_url("index.php/Admin/Delete?id=$id")."'
+						echo "<a href='".base_url("index.php/Admin/DeleteFacilities?id=$id")."'
 								style='margin-right:10px;color:rgb(255,215,0);'>";
 							echo "<button class='btn btn-danger'>";
 								echo "<span >Delete</span>";

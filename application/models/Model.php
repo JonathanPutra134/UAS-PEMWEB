@@ -14,7 +14,7 @@
 
 
     public function loginAuthentication($email, $password) {
-      $query = $this->db->get_where('admin', array('Email' => $email));
+      $query = $this->db->get_where('user', array('Email' => $email));
 
       if(!empty($query->row_array())) { //data berhasil ditangkap dari database
         $query = $query->row_array();
@@ -46,13 +46,14 @@
           $Password = password_hash($this->input->post('Password'), PASSWORD_DEFAULT);
           $ProfilePicture = $this->upload->data();
           $ProfilePicture = "assets/images/" . $ProfilePicture['file_name']; 
-    
+          $Role = 'user';
         
-          $query = $this->db->insert("admin", [
+          $query = $this->db->insert("user", [
             "Name" => $Name,
             "Email" => $Email,
             "Password" => $Password,
-            "ProfilePicture" => $ProfilePicture
+            "ProfilePicture" => $ProfilePicture,
+            "Role" => $Role
 
 
            ]);
@@ -69,7 +70,10 @@
 			 
 		}
 
-		
+		 public function ShowUser(){
+         $query = $this->db->query("SELECT * FROM user");
+        return $query->result_array();
+     }
 		
 	
 	}

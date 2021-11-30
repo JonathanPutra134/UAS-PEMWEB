@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-
+//CONTROLLER KHUSUS ADMIN + REGISTER + LOGIN
 class Home extends CI_Controller{
     public function __construct()
 	{
@@ -14,6 +14,7 @@ class Home extends CI_Controller{
     public function index(){
         $data['js'] = $this->load->view('include/javascript.php', NULL, TRUE);
         $data['css'] = $this->load->view('include/css.php', NULL, TRUE);
+        $data['header'] = $this->load->view('pages/header.php', NULL, TRUE);
         $this->load->view('pages/home.php', $data);
     }
 
@@ -22,10 +23,17 @@ class Home extends CI_Controller{
         session_unset();
         redirect('home/login');
     }
+    public function admin() {
+        $data['user'] = $this->Model->ShowUser();
+        $data['js'] = $this->load->view('include/javascript.php', NULL, TRUE);
+        $data['css'] = $this->load->view('include/css.php', NULL, TRUE);
+        $data['header'] = $this->load->view('pages/header.php', NULL, TRUE);
+        $this->load->view('pages/admin.php', $data);
+    }
 
     public function Login(){
         if(isset($_SESSION['loggedInAccount'])) {
-            redirect("home/index");
+            redirect("home/admin");
         }
 
         $data['js'] = $this->load->view('include/javascript.php', NULL, TRUE);
@@ -37,7 +45,7 @@ class Home extends CI_Controller{
             $this->load->view('pages/login.php', $data);
         } else { //form validation berhasil
             if($this->Model->loginAuthentication($this->input->post('Email'), $this->input->post("Password"))) {
-                redirect("home/index");
+                redirect("home/admin");
             } else {
                 redirect("home/login");
             }
@@ -80,4 +88,5 @@ class Home extends CI_Controller{
 
     
 }
+    
 }

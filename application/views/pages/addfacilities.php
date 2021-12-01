@@ -52,6 +52,8 @@
      
       
         <a class="btn btn-danger" href="<?php echo base_url("index.php/Admin");?>">Back</a>
+
+        <div>Halo</div>
         
         
 

@@ -15,7 +15,7 @@
 <div style="margin-top: 100px;" class="container d-flex justify-content-sm-center position-absolute top-50 start-50 translate-middle">
 <div class="card">
     <div class="card-body">
-    	<?php echo form_open_multipart('Admin/AddFacilities'); ?>
+    	<?php echo form_open_multipart('Management/AddFacilities'); ?>
       
         <div class="mb-3">
           <label for="Name" class="form-label">Name</label>
@@ -29,6 +29,12 @@
         <div class="mb-3">
           <label for="Image" class="form-label">Image</label>
           <input type="File" name="Image" class="form-control" id="Image" >
+           <?php
+           if(isset($error)){ 
+          echo "<font color='red'>";
+          echo $error;
+		      echo "</font>"; 
+           }?>
         </div>
 
         <div class="mb-3">

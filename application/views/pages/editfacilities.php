@@ -8,33 +8,38 @@
        <?php
             echo $js;
             echo $css;
+            $id = $_GET["id"];
+      
         ?>
 </head>
 <body>
-<h1>Add Facilities</h1>
 <div style="margin-top: 100px;" class="container d-flex justify-content-sm-center position-absolute top-50 start-50 translate-middle">
-<div class="card">
+  <div class="card">
     <div class="card-body">
-    	<?php echo form_open_multipart('Admin/AddFacilities'); ?>
-      
-        <div class="mb-3">
+
+    	<?php echo form_open_multipart("Admin/UpdateFacilities?id=$id"); ?>
+        <h4><b>Edit Facilities</b></h4>
+
+          <div class="mb-3">
           <label for="Name" class="form-label">Name</label>
           <input type="text" class="form-control" id="Name" name="Name">
           <?php echo "<font color='red'>";
 		        echo form_error('Name'); 
 		        echo "</font>"; ?>
-       </div>
+          </div>
          
 
         <div class="mb-3">
           <label for="Image" class="form-label">Image</label>
           <input type="File" name="Image" class="form-control" id="Image" >
-             <?php
-           if(isset($error)){ 
-          echo "<font color='red'>";
-          echo $error;
-		      echo "</font>"; 
-           }?>
+             <?php echo "<font color='red'>";
+          if(isset($error)){
+		      echo $error;
+          }
+		    
+		      echo "</font>"; ?>
+        </div>
+
         </div>
 
         <div class="mb-3">
@@ -42,16 +47,19 @@
           <textarea cols="50" rows="5" name="Description" class="form-control" id="Description" ></textarea>
         </div>
      
-        <div style="padding: 30px;"></div>
-        <button type="submit" name="submit" class="btn btn-dark">Add</button>
-    </div>
+   
      
-    
+        <div style="padding: 30px;"></div>
+        <button type="submit" name="submit" class="btn btn-dark">Edit</button>
+        </div>
      
       </form>
      
       
-        <a class="btn btn-danger" href="<?php echo base_url("index.php/Management");?>">Back</a>
+        <a class="btn btn-danger" href="<?php echo base_url("index.php/Admin");?>">Back</a>
+     
+      
+    
         
         
 

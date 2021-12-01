@@ -34,7 +34,8 @@ class Admin extends CI_Controller{
 
     public function AddFacilities()
     {
-        $rules = array(
+      
+      $rules = array(
         array(
         'field' => 'Name',
         'label' => 'Name',
@@ -43,13 +44,34 @@ class Admin extends CI_Controller{
         )
 
     );
-     $this->form_validation->set_rules($rules);
-     if($this->form_validation->run() != false){
-        $this->Model->AddFacilities();
+       $config['upload_path'] = './assets/images';
+	   $config['allowed_types'] = 'jpg|png|jpeg';
+	   $config['max_size'] = '5000';
+       $this->load->library('upload', $config);
+
+       $this->form_validation->set_rules($rules);
+       $status = $this->upload->do_upload("Image");
+         $data['error'] = $this->upload->display_errors();
+    
+  
+     if($this->form_validation->run() != false && $status){ //jika validation benar
+     
+       $Name = $this->input->post('Name');
+
+       $Description = $this->input->post('Description');
+       if(empty($Image)){
+       $Image = $this->upload->data();
+       $Image = "assets/images/" . $Image['file_name']; 
+       }
+       $this->Model->AddFacilities($Name, $Description, $Image);
+      
         redirect("Admin/Facilities");
-    }else {
+    }else { //jika ada data yang tidak valid
+      
+       
         $data['js'] = $this->load->view('include/javascript.php', NULL, TRUE);
         $data['css'] = $this->load->view('include/css.php', NULL, TRUE);
+      
         $this->load->view('pages/addfacilities.php', $data);
 
     }
@@ -75,6 +97,68 @@ class Admin extends CI_Controller{
         $data['css'] = $this->load->view('include/css.php', NULL, TRUE);
         $this->load->view('pages/edit.php', $data);
 }
+ public function EditFacilities()
+ {
+        $id = $_GET["id"];//DAPET ID dari facilities.php
+        $data['js'] = $this->load->view('include/javascript.php', NULL, TRUE);
+        $data['css'] = $this->load->view('include/css.php', NULL, TRUE);
+        $this->load->view('pages/editfacilities.php', $data);
+ }
+ public function UpdateFacilities()
+ {
+       $id = $_GET["id"];//DAPET ID dari editfacilities.php
+      $rules = array(
+        array(
+        'field' => 'Name',
+        'label' => 'Name',
+        'rules' => 'required',
+        "errors" => ["required" => "Tolong masukkan nama!"]
+        )
+
+    );
+       $config['upload_path'] = './assets/images';
+	   $config['allowed_types'] = 'jpg|png|jpeg';
+	   $config['max_size'] = '5000';
+       $this->load->library('upload', $config);
+
+       $this->form_validation->set_rules($rules);
+       $status = $this->upload->do_upload("Image");
+         $data['error'] = $this->upload->display_errors();
+       $query = $this->db->query("SELECT Image from facilities WHERE id_facilities = '$id'");
+       $query = $query->row_array();
+      if ($status == 0 && $data['error'] == "<p>You did not select a file to upload.</p>") {
+            $Image = $query['Image'];
+        
+            $status = 1;
+      }
+
+    //di controller ini harusnya ada library 'form_validation' + 'uploading_file'
+    
+    
+
+     if($this->form_validation->run() != false && $status){ //jika validation benar
+     
+       $Name = $this->input->post('Name');
+
+       $Description = $this->input->post('Description');
+       if(empty($Image)){
+       $Image = $this->upload->data();
+       $Image = "assets/images/" . $Image['file_name']; 
+       }
+       $this->Model->UpdateFacilities($id, $Name, $Description, $Image);
+      
+        redirect("Admin");
+    }else { //jika ada data yang tidak valid
+      
+       
+        $data['js'] = $this->load->view('include/javascript.php', NULL, TRUE);
+        $data['css'] = $this->load->view('include/css.php', NULL, TRUE);
+      
+        $this->load->view('pages/editfacilities.php', $data);
+
+    }
+ }
+
 
     
     

@@ -13,9 +13,9 @@
 
 
 
-    public function loginAuthentication($email, $password) {
-      $query = $this->db->get_where('user', array('Email' => $email));
-
+    
+public function loginAuthentication($email, $password) {
+    $query = $this->db->get_where('user', array('Email' => $email));  
       if(!empty($query->row_array())) { //data berhasil ditangkap dari database
         $query = $query->row_array();
       } else { //email tidak terdaftar di database
@@ -77,20 +77,9 @@
      
 
 
-		 public function AddFacilities(){//UNTUK ADD FASILITAS
+		 public function AddFacilities($Name, $Description, $Image){//UNTUK ADD FASILITAS
 		
 		  $this->db->trans_begin();
-          $config['upload_path'] = './assets/images';
-		      $config['allowed_types'] = 'jpg|png|jpeg';
-		      $config['max_size'] = '5000';
-          $this->load->library('upload', $config);
-          $status = $this->upload->do_upload("Image");
-         
-          $Name = $this->input->post('Name');
-          $Description = $this->input->post('Description');
-         
-          $Image = $this->upload->data();
-          $Image = "assets/images/" . $Image['file_name']; 
     
           $query = $this->db->insert("facilities", [
             "Name" => $Name,
@@ -114,7 +103,34 @@
          $query = $this->db->query("SELECT * FROM facilities");
         return $query->result_array();
      }
+     public function FacilitiesDetails($id){ //SHOW Facilities di admin
+         $query = $this->db->query("SELECT * FROM facilities WHERE id_facilities = $id");
+        return $query->result_array();
+     }
 	
-	}
+	
+    public function UpdateFacilities($id, $Name, $Description, $Image) {
 
+    $this->db->trans_begin();
+    
+    $data = array(
+      "Name" => $Name,
+      "Image" => $Image,
+      "Description" => $Description
+     
+    );
+
+    $this->db->where('id_facilities', $id);
+    $query = $this->db->update('facilities', $data);
+
+    $this->db->trans_complete();
+
+    if ($this->db->trans_status() === FALSE) {
+      $this->db->trans_rollback();
+      return FALSE;
+    } else {
+      return $query;
+    }
+  }
+  }
 ?>

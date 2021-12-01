@@ -49,7 +49,7 @@
 							echo "<button class='btn btn-danger'>";
 								echo "<span >Delete</span>";
 							echo "</button>";
-							echo "<a href='".base_url("index.php/Admin/Edit?id=$id")."'
+							echo "<a href='".base_url("index.php/Admin/EditFacilities?id=$id")."'
 								style='margin-right:10px;color:rgb(255,215,0);'>";
 							echo "<button class='btn btn-primary'>";
 								echo "<span >Edit</span>";

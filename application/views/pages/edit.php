@@ -8,34 +8,44 @@
        <?php
             echo $js;
             echo $css;
+            echo $header;
+            $id = $_GET["id"];
+            $user = $user[0];
         ?>
 </head>
 <body>
 <div style="margin-top: 100px;" class="container d-flex justify-content-sm-center position-absolute top-50 start-50 translate-middle">
   <div class="card">
     <div class="card-body">
-    	<?php echo form_open_multipart('Admin/Edit'); ?>
+    	<?php echo form_open_multipart("Admin/UpdateUser?id=$id"); ?>
             <h4><b>Edit data</b></h4>
         <div class="mb-3">
           <label for="Name" class="form-label">Name</label>
-          <input type="text" class="form-control" id="Name" name="Name">
-         
+          <input type="text" class="form-control" id="Name" name="Name" value="<?php echo $user["Name"];?>">
+            <?php echo "<font color='red'>";
+		        echo form_error('Name'); 
+		        echo "</font>"; ?>
        </div>
         <div class="mb-3">
           <label for="Email" class="form-label">Email</label>
-          <input type="Email" class="form-control" id="Email" name="Email">
+          <input type="Email" class="form-control" id="Email" name="Email" value="<?php echo $user["Email"];?>">
              
        </div>
-         
-        <div style="padding: 30px;"></div>
-        <div class="mb-3">
-          <label for="Password" class="form-label">Password</label>
-          <input type="Password" name="Password" class="form-control" id="Password" >
-        </div>
+  
 
-        <div class="mb-3">
-          <label for="ProfilePicture" class="form-label">Profile Picture</label>
-          <input type="File" name="ProfilePicture" class="form-control" id="ProfilePicture" >
+          <div class="form-group">
+          <p><b>Current ProfilePicture : </b></p>
+          <img class="mb-2" style="margin-bottom:10px;" src="<?= base_url("") . $user["ProfilePicture"] ?>" alt="ProfilePicture" width="200" height="200">
+          <br>
+          <label for="ProfilePicture">Change Poster</label>
+          <input type="file" value="<?= $user['ProfilePicture'] ?>" class="form-control" name="ProfilePicture" id="ProfilePicture" placeholder="ProfilePicture">
+        </div>
+             <?php echo "<font color='red'>";
+          if(isset($error)){
+		      echo $error;
+          }
+		    
+		      echo "</font>"; ?>
         </div>
      
         <div style="padding: 30px;"></div>

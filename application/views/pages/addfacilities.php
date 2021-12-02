@@ -8,6 +8,7 @@
        <?php
             echo $js;
             echo $css;
+            echo $header;
         ?>
 </head>
 <body>

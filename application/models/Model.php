@@ -107,6 +107,10 @@ public function loginAuthentication($email, $password) {
          $query = $this->db->query("SELECT * FROM facilities WHERE id_facilities = $id");
         return $query->result_array();
      }
+      public function UserDetails($id){ //SHOW Facilities di admin
+         $query = $this->db->query("SELECT * FROM user WHERE id_user = $id");
+        return $query->result_array();
+     }
 	
 	
     public function UpdateFacilities($id, $Name, $Description, $Image) {
@@ -132,5 +136,64 @@ public function loginAuthentication($email, $password) {
       return $query;
     }
   }
+
+   public function UpdateUser($id, $Name, $Email, $ProfilePicture) {
+
+    $this->db->trans_begin();
+    
+    $data = array(
+      "Name" => $Name,
+      "ProfilePicture" => $ProfilePicture,
+      "Email" => $Email
+     
+    );
+
+    $this->db->where('id_user', $id);
+    $query = $this->db->update('user', $data);
+
+    $this->db->trans_complete();
+
+    if ($this->db->trans_status() === FALSE) {
+      $this->db->trans_rollback();
+      return FALSE;
+    } else {
+      return $query;
+    }
+  }
+  
+   public function RequestBooking($FacilityID, $ReservationDate, $StartTime, $EndTime, $UserID){
+    
+		
+		  $this->db->trans_begin();
+    
+          $query = $this->db->insert("request", [
+            "id_facilities" => $FacilityID,
+            "ReservationDate" => $ReservationDate,
+            "StartTime" => $StartTime,
+            "EndTime" => $EndTime,
+            "id_user" => $UserID
+        
+          ]);
+     
+          $this->db->trans_complete();
+
+          if ($this->db->trans_status() === FALSE) {
+              $this->db->trans_rollback();
+              echo "gagal";
+          } else {
+              return $query;
+                 }
+			
+			 
+		}
+   public function RequestListUser($id){ 
+         $query = $this->db->query("SELECT * FROM request WHERE id_user = $id");
+        return $query->result_array();
+     }
+   public function RequestListAll(){ 
+         $query = $this->db->query("SELECT * FROM request");
+        return $query->result_array();
+     }
+	 
   }
 ?>

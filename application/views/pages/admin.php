@@ -9,12 +9,20 @@
     echo $css;
   ?>
   
-  <title>Admin Page</title>
+	<style>
+		body {
+			background-image: url(https://www.darkfield.london/wp-content/uploads/header-background-hotel-savoy-dark.jpg);
+			background-size: cover;
+			background-position-y: 30%;
+		}
+	</style>
+  <title>Users</title>
 </head>
 <body>
 	<?php echo $header ?>
+
 	<div class="container">
-		<table id="tblMovie" class="table table-striped table-bordered" cellspacing="0" width="100%">
+		<table id="tblMovie" class="table table-striped table-bordered table-dark table-hover table-responsive" cellspacing="0" width="100%">
 			<thead>
 				<tr>
 					<th> # </th>
@@ -27,8 +35,8 @@
 			<tbody>
 			<?php
 				$count = 1;
+
 				foreach($user as $data) {
-					$base_url = base_url();
 					$id = $data['id_user'];
 					echo "<tr>";
 						echo "<td>" . $count++ ."</td>";
@@ -38,17 +46,8 @@
 					
 					//BUTTON DELETE & EDIT
 						echo "<td>";
-							echo "<a href='".base_url("index.php/Admin/Delete?id=$id")."'
-									style='margin-right:10px;color:rgb(255,215,0);'>";
-								echo "<button class='btn btn-danger'>";
-									echo "<span >Delete</span>";
-								echo "</button>";
-								echo "<a href='".base_url("index.php/Admin/Edit?id=$id")."'
-									style='margin-right:10px;color:rgb(255,215,0);'>";
-								echo "<button class='btn btn-primary'>";
-									echo "<span>Edit</span>";
-								echo "</button>";
-							echo "</a>";
+							echo "<a href='" . base_url("index.php/Admin/Edit?id=$id") . "' class='btn btn-primary me-1'>Edit</a>";
+							echo "<a href='" . base_url("index.php/Admin/Delete?id=$id") . "' class='btn btn-danger'>Delete</a>";
 						echo "</td>";
 					echo "</tr>";  
 				}

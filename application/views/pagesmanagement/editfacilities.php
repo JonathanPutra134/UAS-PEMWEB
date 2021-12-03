@@ -9,7 +9,10 @@
             echo $js;
             echo $css;
             $id = $_GET["id"];
-      
+              echo $header;
+           $details = $details[0]
+        
+        
         ?>
 </head>
 <body>
@@ -19,19 +22,23 @@
 
     	<?php echo form_open_multipart("Management/UpdateFacilities?id=$id"); ?>
         <h4><b>Edit Facilities</b></h4>
-
+        
           <div class="mb-3">
           <label for="Name" class="form-label">Name</label>
-          <input type="text" class="form-control" id="Name" name="Name">
+          <input type="text" class="form-control" id="Name" name="Name" value="<?php echo $details['Name'];?>">
           <?php echo "<font color='red'>";
 		        echo form_error('Name'); 
 		        echo "</font>"; ?>
           </div>
          
 
-        <div class="mb-3">
-          <label for="Image" class="form-label">Image</label>
-          <input type="File" name="Image" class="form-control" id="Image" >
+          <div class="form-group">
+          <p><b>Current Image : </b></p>
+          <img class="mb-2" style="margin-bottom:10px;" src="<?= base_url("") . $details["Image"] ?>" alt="Image" width="200" height="200">
+          <br>
+          <label for="poster">Change Poster</label>
+          <input type="file" value="<?= $details['Image'] ?>" class="form-control" name="Image" id="Image" placeholder="Image">
+        </div>
              <?php echo "<font color='red'>";
           if(isset($error)){
 		      echo $error;
@@ -40,9 +47,12 @@
 		      echo "</font>"; ?>
         </div>
 
+        </div>
+
         <div class="mb-3">
           <label for="Image" class="form-label">Description</label>
-          <textarea cols="50" rows="5" name="Description" class="form-control" id="Description" ></textarea>
+          <textarea cols="50" rows="5" name="Description" class="form-control" id="Description" >
+          <?php echo $details['Description'];?></textarea>
         </div>
      
    
@@ -54,13 +64,15 @@
       </form>
      
       
-        <a class="btn btn-danger" href="<?php echo base_url("index.php/Admin");?>">Back</a>
+        <a class="btn btn-danger" href="<?php echo base_url("index.php/Management");?>">Back</a>
      
       
     
         
         
-
+<?php
+           
+?>
       
  </div>
 </div>

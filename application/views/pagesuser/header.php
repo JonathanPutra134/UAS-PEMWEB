@@ -1,10 +1,14 @@
 <nav class="navbar navbar-default">
     <div class="container-fluid">
         <div class="navbar-header" style="padding:0 5%">
+        <?php
+        $UserID = $_SESSION['loggedInAccount']['id_user']; 
+    
+        ?>
             <a class="navbar-brand" href="">Facilities Booking</a>
        
-            <a class="navbar-brand" href="<?php echo base_url("index.php/Management")?>">Facilities</a>
-            <a class="navbar-brand" href="">Request</a>
+            <a class="navbar-brand" href="<?php echo base_url("index.php/User")?>">Facilities</a>
+            <a class="navbar-brand" href="<?php echo base_url("index.php/User/BookingList?UserID=$UserID")?>">Request</a>
         </div>
             <!-- UNTUK USERNAME PAS ADMIN UDAH LOGIN -->
            <p class='navbar-brand'><?php echo $_SESSION['loggedInAccount']['Name'];?></p>

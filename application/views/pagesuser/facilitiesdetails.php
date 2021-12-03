@@ -33,7 +33,7 @@
   <div class="card-body">
     <h5 class="card-title"><?php echo $data["Name"];?></h5>
     <p class="card-text"><?php echo $data["Description"]?></p>
-    <a href="<?php echo base_url("index.php/User/BookForm")?>" class="btn btn-primary">Book Now!</a>
+    <a href="<?php echo base_url("index.php/User/BookForm?id=$id")?>" class="btn btn-primary">Book Now!</a>
   </div>
 </div>
    <a class="btn btn-danger" href="<?php echo base_url("index.php/User");?>">Back to Listing</a>

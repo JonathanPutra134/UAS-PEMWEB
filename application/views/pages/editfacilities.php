@@ -64,7 +64,7 @@
             <button type="submit" name="submit" class="btn btn-dark" style="width: 100%;">Confirm</button>
           </div>
           <div class="col-6">
-            <a class="btn btn-secondary" style="width: 100%;" href="<?php echo base_url("index.php/Admin");?>">Back</a>
+            <a class="btn btn-secondary" style="width: 100%;" href="<?php echo base_url("index.php/Admin/Facilities");?>">Back</a>
           </div>
       </form>
     </div>

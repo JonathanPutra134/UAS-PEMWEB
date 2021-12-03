@@ -35,8 +35,8 @@
                 <?php
                     if(isset($_SESSION['loggedInAccount'])) {
                 ?>
-                        <a class="btn btn-light btn-outline-danger" href="<?php echo base_url("index.php/Home/Logout");?>">Logout</a>
-                          <a class="btn btn-light btn-outline-danger" href="<?php echo base_url("index.php/Home/Login");?>">Login</a>
+                    <a class="btn btn-light btn-outline-dark" href="<?php echo base_url("index.php/Home/Login");?>">Home</a>
+                    <a class="btn btn-light btn-outline-danger" href="<?php echo base_url("index.php/Home/Logout");?>">Logout</a>
                 <?php 
                     } else {
                         ?>

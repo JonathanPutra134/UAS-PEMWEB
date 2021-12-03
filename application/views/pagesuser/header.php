@@ -5,7 +5,7 @@
         $UserID = $_SESSION['loggedInAccount']['id_user']; 
     
         ?>
-            <a class="navbar-brand" href="">Facilities Booking</a>
+            <a class="navbar-brand" href="<?php echo base_url("index.php/User")?>">Facilities Booking</a>
        
             <a class="navbar-brand" href="<?php echo base_url("index.php/User")?>">Facilities</a>
             <a class="navbar-brand" href="<?php echo base_url("index.php/User/BookingList?UserID=$UserID")?>">Request</a>

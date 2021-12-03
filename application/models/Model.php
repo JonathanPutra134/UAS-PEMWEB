@@ -32,21 +32,10 @@ public function loginAuthentication($email, $password) {
       }
     }
 
-		public function AddData()//UNTUK REGISTER
+		public function AddData($Name, $Email, $Password, $ProfilePicture, $Role)//UNTUK REGISTER
 		{
 		  $this->db->trans_begin();
-          $config['upload_path'] = './assets/images';
-		  $config['allowed_types'] = 'jpg|png|jpeg';
-		  $config['max_size'] = '5000';
-          $this->load->library('upload', $config);
-          $status = $this->upload->do_upload("ProfilePicture");
-         
-          $Name = $this->input->post('Name');
-          $Email = $this->input->post('Email');
-          $Password = password_hash($this->input->post('Password'), PASSWORD_DEFAULT);
-          $ProfilePicture = $this->upload->data();
-          $ProfilePicture = "assets/images/" . $ProfilePicture['file_name']; 
-          $Role = 'user';
+          
         
           $query = $this->db->insert("user", [
             "Name" => $Name,

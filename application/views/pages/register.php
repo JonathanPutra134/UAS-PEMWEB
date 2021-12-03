@@ -16,6 +16,7 @@
     }
   </style>
   <title>Register an Account</title>
+  <script src="https://www.google.com/recaptcha/api.js"></script>
 </head>
 <body>
   <div class="container d-flex justify-content-sm-center position-absolute top-50 start-50 translate-middle">
@@ -49,6 +50,7 @@
             <label for="ProfilePicture" class="form-label">Profile Picture</label>
             <input type="File" name="ProfilePicture" class="form-control" id="ProfilePicture" >
           </div>
+          <div class="g-recaptcha" data-sitekey="6Le0yHUdAAAAAPrVbaowd2OVHPNLQzIshKa4ynYM" style="margin-bottom:10px;"></div>
           <div class="d-grid gap-2">
             <button type="submit" name="submit" class="btn btn-dark btn-outline-light">Register</button>
             <a class="btn btn-secondary btn-outline-light" href="<?php echo base_url("index.php/Home");?>">Back</a>

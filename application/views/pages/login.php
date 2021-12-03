@@ -25,7 +25,7 @@
     	<?php echo form_open('Home/Login'); ?>
         <h4><b>Welcome back!</b></h4>
         <div class="mb-3">
-          <label for="Email" class="form-label">E-mail</label>
+          <label for="Email" class="form-label">Email</label>
           <input type="Email" class="form-control" id="Email" name="Email">
         </div>
         <div class="mb-3">
@@ -42,6 +42,7 @@
         <div class="d-grid gap-2">
           <button type="submit" name="submit" class="btn btn-dark btn-outline-light">Login</button>
           <a class="btn btn-secondary btn-outline-light" href="<?php echo base_url("index.php/Home");?>">Back</a>
+         
         </div>
       </form>
     </div>

@@ -27,8 +27,14 @@ class Home extends CI_Controller{
 
     public function Login(){
         if(isset($_SESSION['loggedInAccount'])) {
-            redirect("home/admin");
-        }
+             if($_SESSION['loggedInAccount']['Role'] == "admin") {
+                    redirect("Admin");
+                 }else if($_SESSION['loggedInAccount']['Role'] == "management") {
+                    redirect("Management");
+                 }else {
+                    redirect("User");
+                 }
+                }
 
         $data['js'] = $this->load->view('include/javascript.php', NULL, TRUE);
         $data['css'] = $this->load->view('include/css.php', NULL, TRUE);
@@ -77,21 +83,57 @@ class Home extends CI_Controller{
     
 	    
     );
+   
+    $this->form_validation->set_rules($rules);
     
-     $this->form_validation->set_rules($rules);
-       if(isset($_POST["submit"])){
-         if(isset($_POST['g-recaptcha-response'])) $captcha= $_POST['g-recaptcha-response'];
-            if(!$captcha){
-            echo "<h2>Please check the captcha form</h2>";
-            exit;
-        }
-            $str= "https://www.google.com/recaptcha/api/siteverify?secret=6Le0yHUdAAAAADOscmECNGqJQ3SPKrSz26KCa4jA"."&response=".$captcha."&remoteip=".$_SERVER['REMOTE_ADDR'];
-            
-                $response= file_get_contents($str);
-                $response_arr=(array) json_decode($response);
-      
-        $this->Model->AddData();
+ 
+     
+    if($this->form_validation->run() != false){ //jika validation benar
+          $config['upload_path'] = './assets/images';
+		  $config['allowed_types'] = 'jpg|png|jpeg';
+		  $config['max_size'] = '5000';
+          $this->load->library('upload', $config);
+          $status = $this->upload->do_upload("ProfilePicture");
+         
+          $Name = $this->input->post('Name');
+          $Email = $this->input->post('Email');
+          $Password = password_hash($this->input->post('Password'), PASSWORD_DEFAULT);
+          $ProfilePicture = $this->upload->data();
+          $ProfilePicture = "assets/images/" . $ProfilePicture['file_name']; 
+          $Role = 'user';
+     $recaptchaResponse = trim($this->input->post('g-recaptcha-response'));
+       
+            $userIp=$this->input->ip_address();
+         
+            $secret='6Le0yHUdAAAAADOscmECNGqJQ3SPKrSz26KCa4jA';
+       
+            $credential = array(
+            'secret' => $secret,
+            'response' => $this->input->post('g-recaptcha-response')
+        );
+ 
+      $verify = curl_init();
+      curl_setopt($verify, CURLOPT_URL, "https://www.google.com/recaptcha/api/siteverify");
+      curl_setopt($verify, CURLOPT_POST, true);
+      curl_setopt($verify, CURLOPT_POSTFIELDS, http_build_query($credential));
+      curl_setopt($verify, CURLOPT_SSL_VERIFYPEER, false);
+      curl_setopt($verify, CURLOPT_RETURNTRANSFER, true);
+      $response = curl_exec($verify);
+ 
+      $status= json_decode($response, true);
+          
+      if($status['success']){
+         $this->Model->AddData($Name, $Email, $Password, $ProfilePicture, $Role);
         redirect("Home");
+      }else
+        {
+          $data['js'] = $this->load->view('include/javascript.php', NULL, TRUE);
+        $data['css'] = $this->load->view('include/css.php', NULL, TRUE);
+        $this->load->view('pages/register.php', $data);
+        }
+    
+    
+     
     } else {
         $data['js'] = $this->load->view('include/javascript.php', NULL, TRUE);
         $data['css'] = $this->load->view('include/css.php', NULL, TRUE);

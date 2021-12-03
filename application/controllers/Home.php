@@ -79,6 +79,7 @@ class Home extends CI_Controller{
      $this->form_validation->set_rules($rules);
      if($this->form_validation->run() != false){
         $this->Model->AddData();
+        redirect("Home");
     }else {
         $data['js'] = $this->load->view('include/javascript.php', NULL, TRUE);
         $data['css'] = $this->load->view('include/css.php', NULL, TRUE);

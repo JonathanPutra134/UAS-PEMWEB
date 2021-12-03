@@ -45,7 +45,7 @@
                     	echo "<td>" .$data['ReservationDate'] ."</td>";
                         	echo "<td>" .$data['StartTime'] ."</td>";
                             	echo "<td>" .$data['EndTime'] ."</td>";
-                                	echo "<td>" .$data['id_approval'] ."</td>";
+                                	echo "<td>" .$data['status'] ."</td>";
                    
 			
 				

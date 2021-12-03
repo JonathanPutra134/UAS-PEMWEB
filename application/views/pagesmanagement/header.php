@@ -4,7 +4,7 @@
             <a class="navbar-brand" href="">Facilities Booking</a>
        
             <a class="navbar-brand" href="<?php echo base_url("index.php/Management")?>">Facilities</a>
-            <a class="navbar-brand" href="">Request</a>
+            <a class="navbar-brand" href="<?php echo base_url("index.php/Management/BookingList")?>">Request</a>
         </div>
             <!-- UNTUK USERNAME PAS ADMIN UDAH LOGIN -->
            <p class='navbar-brand'><?php echo $_SESSION['loggedInAccount']['Name'];?></p>

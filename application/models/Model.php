@@ -171,7 +171,8 @@ public function loginAuthentication($email, $password) {
             "ReservationDate" => $ReservationDate,
             "StartTime" => $StartTime,
             "EndTime" => $EndTime,
-            "id_user" => $UserID
+            "id_user" => $UserID,
+            "status" => 'Waiting for approval!'
         
           ]);
      
@@ -193,6 +194,21 @@ public function loginAuthentication($email, $password) {
    public function RequestListAll(){ 
          $query = $this->db->query("SELECT * FROM request");
         return $query->result_array();
+     }
+    
+     public function ApproveRequest($id){ 
+  
+        $status = array('status' => 'approved!');    
+        $this->db->where('id_request', $id);
+        $this->db->update('request', $status);     
+
+     }
+      public function RejectRequest($id){ 
+  
+        $status = array('status' => 'REJECTED!');    
+        $this->db->where('id_request', $id);
+        $this->db->update('request', $status);     
+     
      }
 	 
   }

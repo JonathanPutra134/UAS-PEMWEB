@@ -147,6 +147,45 @@ class Management extends CI_Controller{
 		$this->db->delete('facilities', array('id_facilities' => $id)); 
 	    redirect("Management");
     }
+         public function BookingList()
+    {
+       
+       
+
+        $data['request'] = $this->Model->RequestListAll();
+        $data['header'] = $this->load->view('pagesmanagement/header.php', NULL, TRUE);
+        $data['js'] = $this->load->view('include/javascript.php', NULL, TRUE);
+        $data['css'] = $this->load->view('include/css.php', NULL, TRUE);
+        $this->load->view('pagesmanagement/bookinglist.php', $data);
+    }
+        public function GetFacilitiesName($id)//UNTUK MENAMPILKAN NAMA FASILITAS DI REQUEST LIST
+    {
+     
+        $query = $this->db->query("SELECT * FROM facilities WHERE id_facilities = $id");
+        return $query->result_array();
+    }
+         public function RequesterName($id)//UNTUK MENAMPILKAN NAMA USER DI REQUEST LIST
+    {
+        
+        $query = $this->db->query("SELECT * FROM user WHERE id_user = $id");
+        return $query->result_array();
+    }
+        public function ApproveRequest()
+    {
+     	$id = $_GET["id"];
+     
+		$this->Model->ApproveRequest($id);
+          Redirect("Management/BookingList");
+
+    }
+      public function RejectRequest()
+    {
+     	$id = $_GET["id"];
+		$this->Model->RejectRequest($id);
+        Redirect("Management/BookingList");
+
+    }
+ 
  
 
     

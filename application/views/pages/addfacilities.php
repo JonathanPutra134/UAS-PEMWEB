@@ -41,6 +41,9 @@
         <div class="mb-3">
           <label for="Image" class="form-label">Description</label>
           <textarea cols="50" rows="5" name="Description" class="form-control" id="Description" ></textarea>
+           <?php echo "<font color='red'>";
+		        echo form_error('Description'); 
+		        echo "</font>"; ?>
         </div>
      
         <div style="padding: 30px;"></div>
@@ -54,7 +57,7 @@
       
         <a class="btn btn-danger" href="<?php echo base_url("index.php/Admin");?>">Back</a>
 
-        <div>Halo</div>
+    
         
         
 

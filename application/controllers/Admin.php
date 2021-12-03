@@ -42,7 +42,16 @@ class Admin extends CI_Controller{
         'label' => 'Name',
         'rules' => 'required',
         "errors" => ["required" => "Tolong masukkan nama!"]
-        )
+        ),
+       
+            array(
+        'field' => 'Description',
+        'label' => 'Name',
+        'rules' => 'required',
+        "errors" => ["required" => "Tolong masukkan Deskripsi!"]
+      )
+
+           
 
     );
        $config['upload_path'] = './assets/images';
@@ -69,7 +78,7 @@ class Admin extends CI_Controller{
         redirect("Admin/Facilities");
     }else { //jika ada data yang tidak valid
       
-           $data['header'] = $this->load->view('pages/header.php', NULL, TRUE);
+        $data['header'] = $this->load->view('pages/header.php', NULL, TRUE);
         $data['js'] = $this->load->view('include/javascript.php', NULL, TRUE);
         $data['css'] = $this->load->view('include/css.php', NULL, TRUE);
       
@@ -118,8 +127,26 @@ public function UpdateUser()
         'label' => 'Name',
         'rules' => 'required',
         "errors" => ["required" => "Tolong masukkan nama!"]
-        )
+      ),
+            array(
+        'field' => 'Email',
+        'label' => 'Email',
+        'rules' => ['required', 'valid_email'],
+        "errors" => ["valid_email" => "Please enter an valid email!",
+                    "required" => "Tolong masukkan emaiL!"
+                    ]
+            ),
+            array(
+        'field' => 'Password',
+        'label' => 'Name',
+        'rules' => 'required',
+        "errors" => ["required" => "Tolong masukkan Password!"]
+      )
 
+           
+       
+    
+	    
     );
        $config['upload_path'] = './assets/images';
 	   $config['allowed_types'] = 'jpg|png|jpeg';
@@ -182,7 +209,16 @@ public function EditFacilities()
         'label' => 'Name',
         'rules' => 'required',
         "errors" => ["required" => "Tolong masukkan nama!"]
-        )
+        ),
+       
+            array(
+        'field' => 'Description',
+        'label' => 'Name',
+        'rules' => 'required',
+        "errors" => ["required" => "Tolong masukkan Deskripsi!"]
+      )
+
+           
 
     );
        $config['upload_path'] = './assets/images';

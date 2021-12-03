@@ -32,16 +32,31 @@
         <div class="mb-3">
           <label for="ReservationDate" class="form-label">Reservation Date</label>
           <input type="Date" name="ReservationDate" class="form-control" id="ReservationDate" >
+            <?php 
+              echo "<font color='red'>";
+              echo form_error('ReservationDate'); 
+              echo "</font>"; 
+            ?>
         </div>
 
         <div class="mb-3">
           <label for="StartTime" class="form-label">Start Time</label>
               <input type="Time" name="StartTime" class="form-control" id="StartTime" >
+                <?php 
+              echo "<font color='red'>";
+              echo form_error('StartTime'); 
+              echo "</font>"; 
+            ?>
         </div>
 
          <div class="mb-3">
           <label for="EndTime" class="form-label">End Time</label>
               <input type="Time" name="EndTime" class="form-control" id="EndTime" >
+                <?php 
+              echo "<font color='red'>";
+              echo form_error('EndTime'); 
+              echo "</font>"; 
+            ?>
         </div>
      
         <div style="padding: 30px;"></div>
@@ -53,7 +68,7 @@
       </form>
      
       
-        <a class="btn btn-danger" href="<?php echo base_url("index.php/Management");?>">Back</a>
+        <a class="btn btn-danger" href="<?php echo base_url("index.php/User/ShowDetails");?>">Back</a>
         
         
 

@@ -45,10 +45,22 @@
           <div class="mb-3">
             <label for="Password" class="form-label">Password</label>
             <input type="Password" name="Password" class="form-control" id="Password" >
+               <?php
+              echo "<font color='red'>";
+              echo form_error('Password'); 
+              echo "</font>"; 
+            ?>
+            
           </div>
           <div class="mb-3">
             <label for="ProfilePicture" class="form-label">Profile Picture</label>
             <input type="File" name="ProfilePicture" class="form-control" id="ProfilePicture" >
+             <?php echo "<font color='red'>";
+          if(isset($error)){
+		      echo $error;
+          }
+		    
+		      echo "</font>"; ?>
           </div>
           <div class="g-recaptcha" data-sitekey="6Le0yHUdAAAAAPrVbaowd2OVHPNLQzIshKa4ynYM" style="margin-bottom:10px;"></div>
           <div class="d-grid gap-2">

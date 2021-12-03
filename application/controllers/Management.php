@@ -44,13 +44,21 @@ class Management extends CI_Controller{
      public function AddFacilities()
     {
       
-      $rules = array(
+       $rules = array(
         array(
         'field' => 'Name',
         'label' => 'Name',
         'rules' => 'required',
         "errors" => ["required" => "Tolong masukkan nama!"]
-        )
+        ),
+       
+            array(
+        'field' => 'Description',
+        'label' => 'Name',
+        'rules' => 'required',
+        "errors" => ["required" => "Tolong masukkan Deskripsi!"]
+      )
+
 
     );
        $config['upload_path'] = './assets/images';
@@ -88,13 +96,21 @@ class Management extends CI_Controller{
  public function UpdateFacilities()
  {
      $id = $_GET["id"];//DAPET ID dari editfacilities.php
-      $rules = array(
+         $rules = array(
         array(
         'field' => 'Name',
         'label' => 'Name',
         'rules' => 'required',
         "errors" => ["required" => "Tolong masukkan nama!"]
-        )
+        ),
+       
+            array(
+        'field' => 'Description',
+        'label' => 'Name',
+        'rules' => 'required',
+        "errors" => ["required" => "Tolong masukkan Deskripsi!"]
+      )
+
 
     );
        $config['upload_path'] = './assets/images';

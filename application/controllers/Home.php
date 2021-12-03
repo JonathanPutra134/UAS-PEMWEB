@@ -76,24 +76,35 @@ class Home extends CI_Controller{
             array(
         'field' => 'Email',
         'label' => 'Email',
-        'rules' => 'valid_email',
-        "errors" => ["valid_email" => "Please enter an valid email!"]
+        'rules' => ['required', 'valid_email'],
+        "errors" => ["valid_email" => "Please enter an valid email!",
+                    "required" => "Tolong masukkan emaiL!"
+                    ]
+            ),
+            array(
+        'field' => 'Password',
+        'label' => 'Name',
+        'rules' => 'required',
+        "errors" => ["required" => "Tolong masukkan Password!"]
       )
+
+           
        
     
 	    
     );
-   
-    $this->form_validation->set_rules($rules);
-    
- 
-     
-    if($this->form_validation->run() != false){ //jika validation benar
-          $config['upload_path'] = './assets/images';
+        $config['upload_path'] = './assets/images';
 		  $config['allowed_types'] = 'jpg|png|jpeg';
 		  $config['max_size'] = '5000';
           $this->load->library('upload', $config);
+     
           $status = $this->upload->do_upload("ProfilePicture");
+    $this->form_validation->set_rules($rules);
+      $data['error'] = $this->upload->display_errors();
+ 
+     
+    if($this->form_validation->run() != false){ //jika validation benar
+      
          
           $Name = $this->input->post('Name');
           $Email = $this->input->post('Email');
@@ -135,6 +146,7 @@ class Home extends CI_Controller{
     
      
     } else {
+        
         $data['js'] = $this->load->view('include/javascript.php', NULL, TRUE);
         $data['css'] = $this->load->view('include/css.php', NULL, TRUE);
         $this->load->view('pages/register.php', $data);

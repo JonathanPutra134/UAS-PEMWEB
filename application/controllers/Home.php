@@ -57,6 +57,7 @@ class Home extends CI_Controller{
         $data['js'] = $this->load->view('include/javascript.php', NULL, TRUE);
         $data['css'] = $this->load->view('include/css.php', NULL, TRUE);
         $this->load->view('pages/register.php', $data);
+
     }
      public function AddData(){
         $rules = array(
@@ -73,14 +74,25 @@ class Home extends CI_Controller{
         "errors" => ["valid_email" => "Please enter an valid email!"]
       )
        
-         
+    
 	    
     );
+    
      $this->form_validation->set_rules($rules);
-     if($this->form_validation->run() != false){
+       if(isset($_POST["submit"])){
+         if(isset($_POST['g-recaptcha-response'])) $captcha= $_POST['g-recaptcha-response'];
+            if(!$captcha){
+            echo "<h2>Please check the captcha form</h2>";
+            exit;
+        }
+            $str= "https://www.google.com/recaptcha/api/siteverify?secret=6Le0yHUdAAAAADOscmECNGqJQ3SPKrSz26KCa4jA"."&response=".$captcha."&remoteip=".$_SERVER['REMOTE_ADDR'];
+            
+                $response= file_get_contents($str);
+                $response_arr=(array) json_decode($response);
+      
         $this->Model->AddData();
         redirect("Home");
-    }else {
+    } else {
         $data['js'] = $this->load->view('include/javascript.php', NULL, TRUE);
         $data['css'] = $this->load->view('include/css.php', NULL, TRUE);
         $this->load->view('pages/register.php', $data);
@@ -92,9 +104,7 @@ class Home extends CI_Controller{
     
 }
 
-  public function testing() {
-    echo "JOJO WOI";
-  }
+
 
     
 }

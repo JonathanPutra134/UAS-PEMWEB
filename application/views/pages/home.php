@@ -44,7 +44,6 @@
                         <a class="btn btn-light btn-outline-dark" href="<?php echo base_url("index.php/Home/Register");?>">Register</a>
                     </div>
                 <?php } ?>
-
             </div>
         </div>
     </div>

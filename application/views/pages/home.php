@@ -32,10 +32,19 @@
                     ?>
                 </i></b></p>
             
-                <div class="btn-group" role="group">
-                    <a class="btn btn-light <?php echo (isset($_SESSION['loggedInAccount'])) ? 'btn-outline-danger' : 'btn-outline-dark'; ?>" href="<?php echo base_url("index.php/Home/Logout");?>"><?php echo (isset($_SESSION['loggedInAccount'])) ? 'Logout' : 'Login'; ?></a>
-                    <a class="btn btn-light btn-outline-dark" href="<?php echo base_url("index.php/Home/Register");?>">Register</a>
-                </div>
+                <?php
+                    if(isset($_SESSION['loggedInAccount'])) {
+                ?>
+                        <a class="btn btn-light btn-outline-danger" href="<?php echo base_url("index.php/Home/Logout");?>">Logout</a>
+                <?php 
+                    } else {
+                        ?>
+                    <div class="btn-group" role="group">
+                        <a class="btn btn-light <?php echo (isset($_SESSION['loggedInAccount'])) ? 'btn-outline-danger' : 'btn-outline-dark'; ?>" href="<?php echo base_url("index.php/Home/Logout");?>"><?php echo (isset($_SESSION['loggedInAccount'])) ? 'Logout' : 'Login'; ?></a>
+                        <a class="btn btn-light btn-outline-dark" href="<?php echo base_url("index.php/Home/Register");?>">Register</a>
+                    </div>
+                <?php } ?>
+
             </div>
         </div>
     </div>

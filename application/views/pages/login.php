@@ -42,6 +42,8 @@
         <div class="d-grid gap-2">
           <button type="submit" name="submit" class="btn btn-dark btn-outline-light">Login</button>
           <a class="btn btn-secondary btn-outline-light" href="<?php echo base_url("index.php/Home");?>">Back</a>
+          <p>Sudah punya akun? coba login</p>
+             <a class="btn btn-light btn-outline-dark" href="<?php echo base_url("index.php/Home/Register");?>">Register</a>
          
         </div>
       </form>

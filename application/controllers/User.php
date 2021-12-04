@@ -47,6 +47,14 @@ class User extends CI_Controller{
         $data['css'] = $this->load->view('include/css.php', NULL, TRUE);
         $this->load->view('pagesuser/bookinglist.php', $data);
  }
+ public function BookingSuccess()
+ {
+     
+        $data['header'] = $this->load->view('pagesuser/header.php', NULL, TRUE);
+        $data['js'] = $this->load->view('include/javascript.php', NULL, TRUE);
+        $data['css'] = $this->load->view('include/css.php', NULL, TRUE);
+        $this->load->view('pagesuser/bookingsuccess.php', $data);
+ }
  public function GetFacilitiesName($id)//UNTUK MENAMPILKAN NAMA FASILITAS DI REQUEST LIST
  {
      
@@ -96,7 +104,7 @@ class User extends CI_Controller{
        $this->Model->RequestBooking($FacilityID, $ReservationDate, $StartTime, $EndTime, $UserID);
     
        
-        redirect("User");
+        redirect("User/BookingSuccess");
     }else { //jika ada data yang tidak valid
         
         $data['header'] = $this->load->view('pages/header.php', NULL, TRUE);

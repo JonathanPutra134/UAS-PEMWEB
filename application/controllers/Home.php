@@ -135,7 +135,7 @@ class Home extends CI_Controller{
           
       if($status['success']){
          $this->Model->AddData($Name, $Email, $Password, $ProfilePicture, $Role);
-        redirect("Home");
+        redirect("Home/Login");
       }else
         {
           $data['js'] = $this->load->view('include/javascript.php', NULL, TRUE);

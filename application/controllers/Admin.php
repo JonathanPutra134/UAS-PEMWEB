@@ -252,7 +252,7 @@ public function EditFacilities()
        }
        $this->Model->UpdateFacilities($id, $Name, $Description, $Image);
       
-        redirect("Admin");
+        redirect("Admin/Facilities");
     }else { //jika ada data yang tidak valid
          $data['details'] = $this->Model->FacilitiesDetails($id);
          $data['header'] = $this->load->view('pages/header.php', NULL, TRUE);

@@ -17,6 +17,13 @@
 </head>
 <body>
 <h1>Booking Form</h1>
+<h4>Fasilitas</h4>
+<div class="card" style="width: 18rem;">
+  <img src="<?php echo base_url($details["Image"])?>" width="200" height="200" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title"><?php echo $details["Name"];?></h5>
+  </div>
+</div>
 <div style="margin-top: 100px;" class="container d-flex justify-content-sm-center position-absolute top-50 start-50 translate-middle">
 <div class="card">
     <div class="card-body">

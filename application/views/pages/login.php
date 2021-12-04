@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <?php
-    echo $js;
-    echo $css;
+  echo $js;
+  echo $css;
   ?>
 
   <style>
@@ -18,42 +19,38 @@
   </style>
   <title>Login to an Account</title>
 </head>
+
 <body>
-<div class="container d-flex justify-content-sm-center position-absolute top-50 start-50 translate-middle">
-  <div class="card bg-light bg-opacity-75" style="width: 30rem;">
-    <div class="card-body">
-    	<?php echo form_open('Home/Login'); ?>
-        <h4><b>Welcome back!</b></h4>
+  <div class="container d-flex justify-content-sm-center position-absolute top-50 start-50 translate-middle">
+    <div class="card bg-light bg-opacity-75" style="width: 30rem;">
+      <div class="card-body">
+        <?php echo form_open('Home/Login'); ?>
+        <h2 class="card-title text-center"><b>Welcome Back!</b></h2>
         <div class="mb-3">
-          <label for="Email" class="form-label">Email</label>
-          <input type="Email" class="form-control" id="Email" name="Email">
+          <input style="width: 80%; margin-left:10%;" type="Email" class="form-control" id="Email" name="Email" placeholder="E-mail">
         </div>
         <div class="mb-3">
-          <label for="Password" class="form-label">Password</label>
-          <input type="Password" name="Password" class="form-control" id="Password" >
+          <input style="width: 80%; margin-left:10%;" type="Password" name="Password" class="form-control" id="Password" placeholder="Password">
         </div>
         <?php
-          if(isset($_SESSION['gagalLogin'])) {
-            echo "<p style='color:red;'>{$_SESSION['gagalLogin']}</p>";
-            session_unset();
-            session_destroy();
-          }
+        if (isset($_SESSION['gagalLogin'])) {
+          echo "<p style='color:red; margin-left:10%'>{$_SESSION['gagalLogin']}</p>";
+          session_unset();
+          session_destroy();
+        }
         ?>
         <div class="d-grid gap-2">
-          <button type="submit" name="submit" class="btn btn-dark btn-outline-light">Login</button>
-          <a class="btn btn-secondary btn-outline-light" href="<?php echo base_url("index.php/Home");?>">Back</a>
-          <p>Sudah punya akun? coba login</p>
-             <a class="btn btn-light btn-outline-dark" href="<?php echo base_url("index.php/Home/Register");?>">Register</a>
-         
+          <button style="width: 80%; margin-left:10%; type="submit" name="submit" class="btn btn-dark btn-outline-light">Login</button>
+          <a style="width: 80%; margin-left:10%;" class="btn btn-secondary btn-outline-light" href="<?php echo base_url("index.php/Home"); ?>">Back</a>
+          <div style="" class=" container d-flex justify-content-center">
+            <p style="padding-top: 10px; margin-bottom:0px">Belum memiliki akun? Silahkan <a href="<?php echo base_url("index.php/Home/Register"); ?>">Register</a><br><p>
+          </div>
         </div>
-      </form>
+        </form>
+      </div>
     </div>
-        
-        
-
-      
- </div>
-</div>
+  </div>
 
 </body>
+
 </html>

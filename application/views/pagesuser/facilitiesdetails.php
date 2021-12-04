@@ -1,50 +1,59 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <?php
-            echo $js;
-            echo $css;
-        ?>
-        <title>UAS</title>
+
+<head>
+  <?php
+  echo $js;
+  echo $css;
+  ?>
+  <title>UAS</title>
 </head>
+
 <body>
-       <?php 
-       echo $header; 	
-	  
-       ?>
-      
-		<h1>FACILITIES DETAILS</h1>
+  <?php
+  echo $header;
 
-     
-    <?php
-            $count = 1;
-			
-		   foreach($details as $data)
-			{
-				
-                $id = $data['id_facilities'];
-				
-		
-
-?>
- 
-  <div class="card flex" style="width: 18rem;">
-  <img src="<?php echo base_url($data["Image"])?>" width="200" height="200" class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title"><?php echo $data["Name"];?></h5>
-    <p class="card-text"><?php echo $data["Description"]?></p>
-    <a href="<?php echo base_url("index.php/User/BookForm?id=$id")?>" class="btn btn-primary">Book Now!</a>
+  ?>
+  <div class="container">
+  <h1 style="text-align: center;">FACILITIES DETAILS</h1>
   </div>
-</div>
-   <a class="btn btn-danger" href="<?php echo base_url("index.php/User");?>">Back to Listing</a>
-<?php
-			}
-?>
-    
- 
 
-          
-      
-        
+
+  <?php
+  $count = 1;
+
+  foreach ($details as $data) {
+
+    $id = $data['id_facilities'];
+
+
+
+  ?>
+    <div class="container" style="background-color: rgba(0, 0, 0, 0.5);">
+    <div class="card flex">
+    <h5 class="card-title" style="text-align: center; margin-top: 5px;"><?php echo $data["Name"]; ?></h5>
+      <img style="margin-left: 40%;" src="<?php echo base_url($data["Image"]) ?>" width="20%"  alt="...">
+      <div class="card-body">
+        <p class="card-text" style="text-align: justify; margin-top: 5px; padding-left: 10%; padding-right: 10%"><?php echo $data["Description"] ?></p>
+      </div>
+      <br>
+      <a  style="width: 20%;"  href="<?php echo base_url("index.php/User/BookForm?id=$id") ?>" class="container btn btn-primary">Book Now!</a>
+      <br>
+      <a style="width: 20%;"  class=" container btn btn-danger" href="<?php echo base_url("index.php/User"); ?>">Back to Listing</a>
+      <br>
+    </div>
+    
+    </div>
+
+  <?php
+  }
+  ?>
+
+
+
+
+
+
 </body>
+
 </html>

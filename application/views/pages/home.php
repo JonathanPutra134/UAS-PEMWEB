@@ -8,7 +8,7 @@
 
     <style>
         body {
-            background-image: url(https://www.wallpaperup.com/uploads/wallpapers/2014/01/13/225694/46fb357ff87f9c078427f55828619f82.jpg);
+            background-image: url(https://freight.cargo.site/t/original/i/1b960295851c6f77613ce3aa5a9e441db80f56f8cdb3107c45a84a2f35406376/auditorium11.jpg);
             background-size: cover;
         }
     </style>

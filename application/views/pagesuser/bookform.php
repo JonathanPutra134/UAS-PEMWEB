@@ -75,7 +75,7 @@
       </form>
      
       
-        <a class="btn btn-danger" href="<?php echo base_url("index.php/User/ShowDetails");?>">Back</a>
+        <a class="btn btn-danger" href="<?php echo base_url("index.php/User/ShowDetails?id=$FacilityID");?>">Back</a>
         
         
 

@@ -21,7 +21,7 @@
 	right: -5px;
 	bottom: -5px;
 	z-index: -1;
-	background: linear-gradient(90deg, #ffffff, #c0c0c0,#808080, #ffffff);
+	background: linear-gradient(90deg, #ffffff, #c0c0c0,#404040, #ffff);
 	background-size: 400%;
 	border-radius: 40px;
 	opacity: 0;

@@ -39,10 +39,10 @@
   ?>
     <div class="container">
     <div class=" card flex bg-secondary bg-gradient " style="--bs-bg-opacity: .7;">
-    <h2 class="card-title" style="text-align: center; margin-top: 5px;"><b><?php echo $data["Name"]; ?></b></h2>
+    <h2 class="card-title text-white" style="text-align: center; margin-top: 5px;"><b><?php echo $data["Name"]; ?></b></h2>
       <img style="align-self: center;" src="<?php echo base_url($data["Image"]) ?>" width="40%"  alt="...">
       <div class="card-body">
-        <p class="card-text" style="text-align: justify; margin-top: 5px; padding-left: 10%; padding-right: 10%"><b><?php echo $data["Description"] ?></b></p>
+        <p class="card-text text-white" style="text-align: justify; margin-top: 5px; padding-left: 10%; padding-right: 10%"><b><?php echo $data["Description"] ?></b></p>
       </div>
       <br>
       <a  style="width: 20%;"  href="<?php echo base_url("index.php/User/BookForm?id=$id") ?>" class="container btn btn-dark">Book Now!</a>

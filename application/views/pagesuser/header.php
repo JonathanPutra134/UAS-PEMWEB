@@ -4,7 +4,7 @@
         $UserID = $_SESSION['loggedInAccount']['id_user']; 
     
         ?>
-        <a class="navbar-brand lamp" href="<?php echo base_url("index.php/User")?>"><b>Facilities Booking</b></a>
+        <a class="navbar-brand" href="<?php echo base_url("index.php/User")?>"><b>Facilities Booking</b></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -28,7 +28,7 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <!-- TOMBOL SIGN OUT -->
-                        <li class="bg-secondary"><a class=" lamp text-center text-danger dropdown-item" href="<?php echo base_url("index.php/Home/logout") ?>">Log Out</a></li>
+                        <li class="bg-secondary"><a class=" lamp text-center text-dark dropdown-item" href="<?php echo base_url("index.php/Home/logout") ?>">Log Out</a></li>
                     </ul>
                 </li>
             </div>

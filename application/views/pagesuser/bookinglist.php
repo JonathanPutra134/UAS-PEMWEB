@@ -54,7 +54,18 @@
 					echo "<td>" . $data['ReservationDate'] . "</td>";
 					echo "<td>" . $data['StartTime'] . "</td>";
 					echo "<td>" . $data['EndTime'] . "</td>";
-					echo "<td>" . $data['status'] . "</td>";
+					if($data['status'] == 'approved!'){ ?>
+						<td style="color:green;">Approved !</td>
+					<?php
+					
+					}else if($data['status'] == 'REJECTED!'){ ?>
+						<td style="color:red;">Rejected !</td>
+					<?php
+					}else{ ?>
+						<td style="color:white;">Waiting for Approval</td>
+					<?php
+					}
+					
 
 
 

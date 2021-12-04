@@ -38,7 +38,7 @@
 
       ?>
         <div class="col">
-          <div class="card lamp  bg-dark bg-gradient" style="width: 20rem;">
+          <div class="card box lamp  bg-dark bg-gradient" style="width: 20rem;">
             <img style="padding: 5px;" src="<?php echo base_url($data["Image"]) ?>" width="200px" height="200px" class="container" alt="...">
             <div class="card-body">
               <h5 class="card-title text-white-50" style="text-align: center;"><b><?php echo $data["Name"]; ?></b></h5>

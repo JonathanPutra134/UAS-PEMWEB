@@ -24,7 +24,7 @@
 
 	<h2 class="text-center text-white"><b>Here your request</b></h2>
 	<div class="container">
-		<table id="tblMovie" class="table table-striped table-bordered table-dark table-hover table-responsive" cellspacing="0" width="100%">
+		<table id="tblMovie" class="box table table-striped table-bordered table-dark table-hover table-responsive" cellspacing="0" width="100%">
 			<thead>
 				<tr>
 
@@ -57,7 +57,6 @@
 					if($data['status'] == 'approved!'){ ?>
 						<td style="color:green;">Approved !</td>
 					<?php
-					
 					}else if($data['status'] == 'REJECTED!'){ ?>
 						<td style="color:red;">Rejected !</td>
 					<?php

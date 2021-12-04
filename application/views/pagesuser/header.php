@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+<nav class="box navbar navbar-expand-lg navbar-dark bg-dark mb-4">
     <div class="container-fluid" style="padding: 0 5%;">
     <?php
         $UserID = $_SESSION['loggedInAccount']['id_user']; 

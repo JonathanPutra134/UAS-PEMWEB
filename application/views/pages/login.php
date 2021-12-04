@@ -22,30 +22,30 @@
 
 <body>
   <div class="container d-flex justify-content-sm-center position-absolute top-50 start-50 translate-middle">
-    <div class="card bg-light bg-opacity-75" style="width: 30rem;">
+    <div class="card bg-light bg-opacity-75" style="width: 30rem; padding: 0 5%;">
       <div class="card-body">
         <?php echo form_open('Home/Login'); ?>
-        <h2 class="card-title text-center"><b>Welcome Back!</b></h2>
-        <div class="mb-3">
-          <input style="width: 80%; margin-left:10%;" type="Email" class="form-control" id="Email" name="Email" placeholder="E-mail">
-        </div>
-        <div class="mb-3">
-          <input style="width: 80%; margin-left:10%;" type="Password" name="Password" class="form-control" id="Password" placeholder="Password">
-        </div>
-        <?php
-        if (isset($_SESSION['gagalLogin'])) {
-          echo "<p style='color:red; margin-left:10%'>{$_SESSION['gagalLogin']}</p>";
-          session_unset();
-          session_destroy();
-        }
-        ?>
-        <div class="d-grid gap-2">
-          <button style="width: 80%; margin-left:10%; type="submit" name="submit" class="btn btn-dark btn-outline-light">Login</button>
-          <a style="width: 80%; margin-left:10%;" class="btn btn-secondary btn-outline-light" href="<?php echo base_url("index.php/Home"); ?>">Back</a>
-          <div style="" class=" container d-flex justify-content-center">
-            <p style="padding-top: 10px; margin-bottom:0px">Belum memiliki akun? Silahkan <a href="<?php echo base_url("index.php/Home/Register"); ?>">Register</a><br><p>
+          <h2 class="card-title text-center"><b>Welcome Back!</b></h2>
+          <div class="mb-3">
+            <input type="Email" class="form-control" id="Email" name="Email" placeholder="E-mail">
           </div>
-        </div>
+          <div class="mb-3">
+            <input type="Password" name="Password" class="form-control" id="Password" placeholder="Password">
+          </div>
+          <?php
+          if (isset($_SESSION['gagalLogin'])) {
+            echo "<p style='color:red; margin-left:10%'>{$_SESSION['gagalLogin']}</p>";
+            session_unset();
+            session_destroy();
+          }
+          ?>
+          <div class="d-grid gap-2">
+            <button type="submit" name="submit" class="btn btn-dark btn-outline-light">Login</button>
+            <a class="btn btn-secondary btn-outline-light" href="<?php echo base_url("index.php/Home"); ?>">Back</a>
+            <div class="mt-1 d-flex justify-content-center">
+              <span>Belum memiliki akun? Silahkan <a href="<?php echo base_url("index.php/Home/Register"); ?>">Register</a></span>
+            </div>
+          </div>
         </form>
       </div>
     </div>

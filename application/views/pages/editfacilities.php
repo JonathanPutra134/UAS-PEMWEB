@@ -22,7 +22,7 @@
       padding: 0 5px;
     }
   </style>
-  <title>Document</title>
+  <title>Edit Facilities</title>
 </head>
 <body>
 <div class="container d-flex justify-content-sm-center">
@@ -66,16 +66,11 @@
           <div class="col-6">
             <a class="btn btn-secondary" style="width: 100%;" href="<?php echo base_url("index.php/Admin/Facilities");?>">Back</a>
           </div>
+        </div> 
       </form>
     </div>
-     
-     
-      
-    </div>
-
-        </div>
+  </div>
  </div>
 </div>
-
 </body>
 </html>

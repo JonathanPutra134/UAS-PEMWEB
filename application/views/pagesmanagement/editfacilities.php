@@ -60,6 +60,24 @@
           <textarea rows="5" name="Description" class="form-control" id="Description" >
           <?php echo $details['Description']; ?></textarea>
         </div>
+          <div class="mb-3">
+            <label for="StartTime" class="form-label">Start Time</label>
+            <input type="Time" name="StartTime" class="form-control" id="StartTime" value="<?php echo $details['StartTime'];?>">
+            <?php
+            echo "<font color='red'>";
+            echo form_error('StartTime');
+            echo "</font>";
+            ?>
+          </div>
+              <div class="mb-3">
+            <label for="EndTime" class="form-label">End Time</label>
+            <input type="Time" name="EndTime" class="form-control" id="EndTime" value="<?php echo $details['EndTime'];?>">
+            <?php
+            echo "<font color='red'>";
+            echo form_error('EndTime');
+            echo "</font>";
+            ?>
+          </div>
         <div class="row">
           <div class="col-6">
             <button type="submit" name="submit" class="btn btn-dark" style="width: 100%;">Confirm</button>

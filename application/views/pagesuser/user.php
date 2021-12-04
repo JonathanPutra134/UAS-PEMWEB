@@ -21,7 +21,7 @@
 <body>
   <?php
   echo $header;
-
+  
   ?>
   <div class="container">
     <h1 class="text-center text-light"><b>FACILITIES LIST</b></h1>
@@ -30,7 +30,8 @@
 
       $count = 1;
       foreach ($facilities as $data) {
-
+        $StartTime=substr($data['StartTime'],0,-3);
+        $EndTime=substr($data['EndTime'],0,-3);
         $id = $data['id_facilities'];
 
 
@@ -41,6 +42,11 @@
             <img style="padding: 5px;" src="<?php echo base_url($data["Image"]) ?>" width="200px" height="200px" class="container" alt="...">
             <div class="card-body">
               <h5 class="card-title text-white-50" style="text-align: center;"><b><?php echo $data["Name"]; ?></b></h5>
+             <h5 class="card-title text-white-50" style="text-align: center;"><b><?php echo "Waktu Tersedia:"; 
+               echo $StartTime;
+               echo "-";
+               echo $EndTime; ?>
+              </b></h5>
               <a  href="<?php echo base_url("index.php/User/ShowDetails?id=$id") ?>" class="lamp container btn btn-secondary">See Details</a>
             </div>
           </div>

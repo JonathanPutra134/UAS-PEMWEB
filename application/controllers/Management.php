@@ -12,6 +12,7 @@ class Management extends CI_Controller{
 	
 	}
     public function index(){
+         $this->Model->CheckManager();
          $data['facilities'] = $this->Model->ShowFacilities();
         $data['js'] = $this->load->view('include/javascript.php', NULL, TRUE);
         $data['css'] = $this->load->view('include/css.php', NULL, TRUE);
@@ -20,6 +21,7 @@ class Management extends CI_Controller{
     }
   
     public function AddFacilitiesPage(){
+         $this->Model->CheckManager();
         $data['js'] = $this->load->view('include/javascript.php', NULL, TRUE);
         $data['css'] = $this->load->view('include/css.php', NULL, TRUE);
         $data['header'] = $this->load->view('pagesmanagement/header.php', NULL, TRUE);
@@ -34,6 +36,7 @@ class Management extends CI_Controller{
     }
     public function EditFacilities()
  {
+      $this->Model->CheckManager();
         $id = $_GET["id"];//DAPET ID dari facilities.php
         $data['header'] = $this->load->view('pagesmanagement/header.php', NULL, TRUE);
         $data['details'] = $this->Model->FacilitiesDetails($id);
@@ -43,7 +46,7 @@ class Management extends CI_Controller{
  }
      public function AddFacilities()
     {
-      
+       $this->Model->CheckManager();
        $rules = array(
         array(
         'field' => 'Name',
@@ -57,7 +60,21 @@ class Management extends CI_Controller{
         'label' => 'Name',
         'rules' => 'required',
         "errors" => ["required" => "Tolong masukkan Deskripsi!"]
+            ),
+              array(
+        'field' => 'StartTime',
+        'label' => 'Name',
+        'rules' => 'required',
+        "errors" => ["required" => "Tolong masukkan waktu tersedianya fasilitas!"]
+        ),
+       
+            array(
+        'field' => 'EndTime',
+        'label' => 'Name',
+        'rules' => 'required',
+        "errors" => ["required" => "Tolong masukkan waktu tersedianya fasilitas!"]
       )
+
 
 
     );
@@ -74,13 +91,14 @@ class Management extends CI_Controller{
      if($this->form_validation->run() != false && $status){ //jika validation benar
      
        $Name = $this->input->post('Name');
-
+       $StartTime = $this->input->post('StartTime');
+       $EndTime = $this->input->post('EndTime');
        $Description = $this->input->post('Description');
        if(empty($Image)){
        $Image = $this->upload->data();
        $Image = "assets/images/" . $Image['file_name']; 
        }
-       $this->Model->AddFacilities($Name, $Description, $Image);
+       $this->Model->AddFacilities($Name, $Description, $Image, $StartTime, $EndTime);
       
         redirect("Management");
     }else { //jika ada data yang tidak valid
@@ -95,6 +113,7 @@ class Management extends CI_Controller{
     }
  public function UpdateFacilities()
  {
+      $this->Model->CheckManager();
      $id = $_GET["id"];//DAPET ID dari editfacilities.php
          $rules = array(
         array(
@@ -109,6 +128,19 @@ class Management extends CI_Controller{
         'label' => 'Name',
         'rules' => 'required',
         "errors" => ["required" => "Tolong masukkan Deskripsi!"]
+            ),
+       array(
+        'field' => 'StartTime',
+        'label' => 'Name',
+        'rules' => 'required',
+        "errors" => ["required" => "Tolong masukkan waktu tersedianya fasilitas!"]
+        ),
+       
+            array(
+        'field' => 'EndTime',
+        'label' => 'Name',
+        'rules' => 'required',
+        "errors" => ["required" => "Tolong masukkan waktu tersedianya fasilitas!"]
       )
 
 
@@ -136,14 +168,15 @@ class Management extends CI_Controller{
      if($this->form_validation->run() != false && $status){ //jika validation benar
      
        $Name = $this->input->post('Name');
-
+         $StartTime = $this->input->post('StartTime');
+            $EndTime = $this->input->post('EndTime');
        $Description = $this->input->post('Description');
        if(empty($Image))
        {
             $Image = $this->upload->data();
             $Image = "assets/images/" . $Image['file_name']; 
        }
-            $this->Model->UpdateFacilities($id, $Name, $Description, $Image);
+            $this->Model->UpdateFacilities($id, $Name, $Description, $Image, $StartTime, $EndTime);
             redirect("Management");
        }else 
        { //jika ada data yang tidak valid
@@ -159,6 +192,7 @@ class Management extends CI_Controller{
 
         public function DeleteFacilities()
     {
+        $this->Model->CheckManager();
      	$id = $_GET["id"];
 		$this->db->delete('facilities', array('id_facilities' => $id)); 
 	    redirect("Management");
@@ -167,7 +201,7 @@ class Management extends CI_Controller{
     {
        
        
-
+         $this->Model->CheckManager();
         $data['request'] = $this->Model->RequestListAll();
         $data['header'] = $this->load->view('pagesmanagement/header.php', NULL, TRUE);
         $data['js'] = $this->load->view('include/javascript.php', NULL, TRUE);
@@ -176,7 +210,7 @@ class Management extends CI_Controller{
     }
         public function GetFacilitiesName($id)//UNTUK MENAMPILKAN NAMA FASILITAS DI REQUEST LIST
     {
-     
+        
         $query = $this->db->query("SELECT * FROM facilities WHERE id_facilities = $id");
         return $query->result_array();
     }
@@ -188,14 +222,16 @@ class Management extends CI_Controller{
     }
         public function ApproveRequest()
     {
-     	$id = $_GET["id"];
      
+     	$id = $_GET["id"];
+        
 		$this->Model->ApproveRequest($id);
           Redirect("Management/BookingList");
 
     }
       public function RejectRequest()
     {
+
      	$id = $_GET["id"];
 		$this->Model->RejectRequest($id);
         Redirect("Management/BookingList");

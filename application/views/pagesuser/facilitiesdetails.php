@@ -31,7 +31,8 @@
   $count = 1;
 
   foreach ($details as $data) {
-
+      $StartTime=substr($data['StartTime'],0,-3);
+        $EndTime=substr($data['EndTime'],0,-3);
     $id = $data['id_facilities'];
 
 
@@ -44,6 +45,11 @@
       <div class="card-body">
         <p class="card-text text-white" style="text-align: justify; margin-top: 5px; padding-left: 10%; padding-right: 10%"><b><?php echo $data["Description"] ?></b></p>
       </div>
+
+               <h5 class="card-title text-white-50" style="text-align: center;"><b><?php echo "Waktu Tersedia:"; 
+               echo $StartTime;
+               echo "-";
+               echo $EndTime; ?>
       <br>
       <a  style="width: 20%;"  href="<?php echo base_url("index.php/User/BookForm?id=$id") ?>" class="container btn btn-dark">Book Now!</a>
       <br>

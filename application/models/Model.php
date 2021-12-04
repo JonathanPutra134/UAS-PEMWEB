@@ -66,14 +66,18 @@ public function loginAuthentication($email, $password) {
      
 
 
-		 public function AddFacilities($Name, $Description, $Image){//UNTUK ADD FASILITAS
+		 public function AddFacilities($Name, $Description, $Image, $StartTime, $EndTime){//UNTUK ADD FASILITAS
 		
 		  $this->db->trans_begin();
     
-          $query = $this->db->insert("facilities", [
-            "Name" => $Name,
-            "Description" => $Description,
-            "Image" => $Image
+          $query = $this->db->insert("facilities", [  
+      "Name" => $Name,
+      "Description" => $Description,
+      "Image" => $Image,
+      "StartTime" => $StartTime,
+      "EndTime" => $EndTime
+     
+  
         
           ]);
      
@@ -102,14 +106,16 @@ public function loginAuthentication($email, $password) {
      }
 	
 	
-    public function UpdateFacilities($id, $Name, $Description, $Image) {
+    public function UpdateFacilities($id, $Name, $Description, $Image, $StartTime, $EndTime) {
 
     $this->db->trans_begin();
     
     $data = array(
       "Name" => $Name,
       "Image" => $Image,
-      "Description" => $Description
+      "Description" => $Description,
+      "StartTime" => $StartTime,
+      "EndTime" => $EndTime
      
     );
 
@@ -199,6 +205,26 @@ public function loginAuthentication($email, $password) {
         $this->db->update('request', $status);     
      
      }
+     function CheckAdmin(){ 
+  if($_SESSION['loggedInAccount']['Role'] != "admin") {
+   redirect(base_url() . 'index.php/ErrorHandler/ErrorMessage');
+  }
+ }
+
+ function CheckUser(){
+  if($_SESSION['loggedInAccount']['Role'] != "user") {
+   redirect(base_url() . 'index.php/ErrorHandler/ErrorMessage');
+   // $this->load->view('pages/errorView');
+  }
+ }
+
+ function CheckManager(){
+ if($_SESSION['loggedInAccount']['Role'] != "management") {
+   redirect(base_url() . 'index.php/ErrorHandler/ErrorMessage');
+  }
+ }
+
+
 	 
   }
 ?>

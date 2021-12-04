@@ -13,6 +13,7 @@ class User extends CI_Controller
     }
     public function index()
     {
+        $this->Model->CheckUser();
         $data['facilities'] = $this->Model->ShowFacilities();
         $data['js'] = $this->load->view('include/javascript.php', NULL, TRUE);
         $data['css'] = $this->load->view('include/css.php', NULL, TRUE);
@@ -21,6 +22,7 @@ class User extends CI_Controller
     }
     public function ShowDetails()
     {
+        $this->Model->CheckUser();
         $id = $_GET["id"];
         $data['details'] = $this->Model->FacilitiesDetails($id);
         $data['js'] = $this->load->view('include/javascript.php', NULL, TRUE);
@@ -31,6 +33,7 @@ class User extends CI_Controller
 
     public function BookForm()
     {
+        $this->Model->CheckUser();
         $id = $_GET["id"];
         $data['details'] = $this->Model->FacilitiesDetails($id);
         $data['header'] = $this->load->view('pagesuser/header.php', NULL, TRUE);
@@ -40,6 +43,8 @@ class User extends CI_Controller
     }
     public function BookingList()
     {
+        
+         $this->Model->CheckUser();
         $UserID = $_GET["UserID"];
 
 
@@ -51,7 +56,7 @@ class User extends CI_Controller
     }
     public function BookingSuccess()
     {
-
+        $this->Model->CheckUser();
         $data['header'] = $this->load->view('pagesuser/header.php', NULL, TRUE);
         $data['js'] = $this->load->view('include/javascript.php', NULL, TRUE);
         $data['css'] = $this->load->view('include/css.php', NULL, TRUE);
@@ -63,10 +68,12 @@ class User extends CI_Controller
         $query = $this->db->query("SELECT * FROM facilities WHERE id_facilities = $id");
         return $query->result_array();
     }
+    
 
 
     public function RequestBooking()
     {
+         $this->Model->CheckUser();
         $UserID = $_GET['id_user'];
         $FacilityID = $_GET['id_facilities'];
         $data['details'] = $this->Model->FacilitiesDetails($FacilityID);
@@ -74,8 +81,8 @@ class User extends CI_Controller
             array(
                 'field' => 'ReservationDate',
                 'label' => 'Date',
-                'rules' => 'required',
-                "errors" => ["required" => "Tolong masukkan tanggal!"]
+                'rules' => 'required|callback_date_valid',
+                 'errors' => ["required" => "Reservation date must be required", "date_valid" => "Tidak bisa membuat reservasi di waktu yang sudah berlalu!/Reservasi tidak boleh kosong!"]
             ),
             array(
                 'field' => 'StartTime',
@@ -88,7 +95,7 @@ class User extends CI_Controller
                 'label' => 'Name',
                 'rules' => 'required',
                 "errors" => ["required" => "Tolong masukkan jam berakhir pakai!"]
-            ),
+            )
 
 
         );
@@ -114,6 +121,14 @@ class User extends CI_Controller
             $data['css'] = $this->load->view('include/css.php', NULL, TRUE);
 
             $this->load->view('pagesuser/bookform', $data);
+            
         }
+        
+        
+        
     }
+    public function date_valid() {
+   return (strtotime(implode("-", explode("/", $_POST['ReservationDate']))) < strtotime("now")) ? false : true;
+ }
+
 }

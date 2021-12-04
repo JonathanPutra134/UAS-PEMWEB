@@ -12,6 +12,7 @@ class Admin extends CI_Controller{
         
 	}
     public function index(){
+       $this->Model->CheckAdmin();
         $data['user'] = $this->Model->ShowUser();
         $data['js'] = $this->load->view('include/javascript.php', NULL, TRUE);
         $data['css'] = $this->load->view('include/css.php', NULL, TRUE);
@@ -19,6 +20,7 @@ class Admin extends CI_Controller{
         $this->load->view('pages/admin.php', $data);
     }
     public function Facilities(){
+       $this->Model->CheckAdmin();
         $data['facilities'] = $this->Model->ShowFacilities();
         $data['js'] = $this->load->view('include/javascript.php', NULL, TRUE);
         $data['css'] = $this->load->view('include/css.php', NULL, TRUE);
@@ -26,6 +28,7 @@ class Admin extends CI_Controller{
         $this->load->view('pages/facilities.php', $data);
     }
     public function AddFacilitiesPage(){
+       $this->Model->CheckAdmin();
         $data['js'] = $this->load->view('include/javascript.php', NULL, TRUE);
         $data['css'] = $this->load->view('include/css.php', NULL, TRUE);
         $data['header'] = $this->load->view('pages/header.php', NULL, TRUE);
@@ -35,7 +38,7 @@ class Admin extends CI_Controller{
 
     public function AddFacilities()
     {
-      
+       $this->Model->CheckAdmin();
       $rules = array(
         array(
         'field' => 'Name',
@@ -49,7 +52,21 @@ class Admin extends CI_Controller{
         'label' => 'Name',
         'rules' => 'required',
         "errors" => ["required" => "Tolong masukkan Deskripsi!"]
+            ),
+              array(
+        'field' => 'StartTime',
+        'label' => 'Name',
+        'rules' => 'required',
+        "errors" => ["required" => "Tolong masukkan waktu tersedianya fasilitas!"]
+        ),
+       
+            array(
+        'field' => 'EndTime',
+        'label' => 'Name',
+        'rules' => 'required',
+        "errors" => ["required" => "Tolong masukkan waktu tersedianya fasilitas!"]
       )
+
 
            
 
@@ -67,13 +84,14 @@ class Admin extends CI_Controller{
      if($this->form_validation->run() != false && $status){ //jika validation benar
      
        $Name = $this->input->post('Name');
-
+        $StartTime = $this->input->post('StartTime');
+            $EndTime = $this->input->post('EndTime');
        $Description = $this->input->post('Description');
        if(empty($Image)){
        $Image = $this->upload->data();
        $Image = "assets/images/" . $Image['file_name']; 
        }
-       $this->Model->AddFacilities($Name, $Description, $Image);
+       $this->Model->AddFacilities($Name, $Description, $Image, $StartTime, $EndTime);
       
         redirect("Admin/Facilities");
     }else { //jika ada data yang tidak valid
@@ -90,6 +108,7 @@ class Admin extends CI_Controller{
 
     public function Delete()
     {
+       $this->Model->CheckAdmin();
      	$id = $_GET["id"];
 		$this->db->delete('user', array('id_user' => $id)); 
 	    redirect("Admin");
@@ -97,12 +116,14 @@ class Admin extends CI_Controller{
     }
     public function DeleteFacilities()
     {
+       $this->Model->CheckAdmin();
      	$id = $_GET["id"];
 		$this->db->delete('facilities', array('id_facilities' => $id)); 
 	    redirect("Admin/Facilities");
     }
     public function DeleteRequest()
     {
+       $this->Model->CheckAdmin();
      	$id = $_GET["id"];
       
 		$this->db->delete('request', array('id_request' => $id)); 
@@ -111,6 +132,7 @@ class Admin extends CI_Controller{
     }
  public function Edit()
  {
+    $this->Model->CheckAdmin();
         $id = $_GET["id"];
         $data['user'] = $this->Model->UserDetails($id);
         $data['header'] = $this->load->view('pages/header.php', NULL, TRUE);
@@ -120,6 +142,7 @@ class Admin extends CI_Controller{
 }
 public function UpdateUser()
 {
+   $this->Model->CheckAdmin();
      $id = $_GET["id"];//DAPET ID dari editfacilities.php
       $rules = array(
         array(
@@ -193,6 +216,7 @@ public function UpdateUser()
  
 public function EditFacilities()
  {
+    $this->Model->CheckAdmin();
         $id = $_GET["id"];//DAPET ID dari facilities.php
         $data['header'] = $this->load->view('pages/header.php', NULL, TRUE);
         $data['details'] = $this->Model->FacilitiesDetails($id);
@@ -202,6 +226,7 @@ public function EditFacilities()
  }
  public function UpdateFacilities()
  {
+    $this->Model->CheckAdmin();
        $id = $_GET["id"];//DAPET ID dari editfacilities.php
       $rules = array(
         array(
@@ -216,7 +241,21 @@ public function EditFacilities()
         'label' => 'Name',
         'rules' => 'required',
         "errors" => ["required" => "Tolong masukkan Deskripsi!"]
+            ),
+              array(
+        'field' => 'StartTime',
+        'label' => 'Name',
+        'rules' => 'required',
+        "errors" => ["required" => "Tolong masukkan waktu tersedianya fasilitas!"]
+        ),
+       
+            array(
+        'field' => 'EndTime',
+        'label' => 'Name',
+        'rules' => 'required',
+        "errors" => ["required" => "Tolong masukkan waktu tersedianya fasilitas!"]
       )
+
 
            
 
@@ -244,13 +283,15 @@ public function EditFacilities()
      if($this->form_validation->run() != false && $status){ //jika validation benar
      
        $Name = $this->input->post('Name');
-
+        $StartTime = $this->input->post('StartTime');
+        $EndTime = $this->input->post('EndTime');
        $Description = $this->input->post('Description');
        if(empty($Image)){
        $Image = $this->upload->data();
        $Image = "assets/images/" . $Image['file_name']; 
+
        }
-       $this->Model->UpdateFacilities($id, $Name, $Description, $Image);
+       $this->Model->UpdateFacilities($id, $Name, $Description, $Image, $StartTime, $EndTime);
       
         redirect("Admin/Facilities");
     }else { //jika ada data yang tidak valid
@@ -268,7 +309,7 @@ public function EditFacilities()
  {
        
        
-
+ $this->Model->CheckAdmin();
         $data['request'] = $this->Model->RequestListAll();
         $data['header'] = $this->load->view('pages/header.php', NULL, TRUE);
         $data['js'] = $this->load->view('include/javascript.php', NULL, TRUE);

@@ -31,7 +31,7 @@ class User extends CI_Controller{
  {
         $id = $_GET["id"];
         $data['details'] = $this->Model->FacilitiesDetails($id);
-        $data['header'] = $this->load->view('pages/header.php', NULL, TRUE);
+        $data['header'] = $this->load->view('pagesuser/header.php', NULL, TRUE);
         $data['js'] = $this->load->view('include/javascript.php', NULL, TRUE);
         $data['css'] = $this->load->view('include/css.php', NULL, TRUE);
         $this->load->view('pagesuser/bookform.php', $data);

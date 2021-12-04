@@ -23,7 +23,7 @@
     <div class="card bg-light bg-opacity-75" style="width: 30rem;">
       <div class="card-body">
         <?php echo form_open_multipart('Home/AddData'); ?>
-          <h4><b>Register</b></h4>
+          <h3 class="text-center"><b>Register</b></h3>
           <div class="mb-3">
             <label for="Name" class="form-label">Name</label>
             <input type="text" class="form-control" id="Name" name="Name">

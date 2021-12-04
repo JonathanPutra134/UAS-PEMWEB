@@ -7,6 +7,14 @@
   echo $css;
   ?>
   <title>UAS</title>
+  <style>
+    body {
+      background-image: url(https://www.darkfield.london/wp-content/uploads/header-background-hotel-savoy-dark.jpg);
+      background-size: cover;
+      background-position-y: 30%;
+    }
+
+  </style>
 </head>
 
 <body>
@@ -15,7 +23,7 @@
 
   ?>
   <div class="container">
-  <h1 style="text-align: center;">FACILITIES DETAILS</h1>
+  <h1 class="text-white" style="text-align: center;">FACILITIES DETAILS</h1>
   </div>
 
 
@@ -29,17 +37,17 @@
 
 
   ?>
-    <div class="container" style="background-color: rgba(0, 0, 0, 0.5);">
-    <div class="card flex">
-    <h5 class="card-title" style="text-align: center; margin-top: 5px;"><?php echo $data["Name"]; ?></h5>
-      <img style="margin-left: 40%;" src="<?php echo base_url($data["Image"]) ?>" width="20%"  alt="...">
+    <div class="container">
+    <div class=" card flex bg-secondary bg-gradient " style="--bs-bg-opacity: .7;">
+    <h2 class="card-title" style="text-align: center; margin-top: 5px;"><b><?php echo $data["Name"]; ?></b></h2>
+      <img style="align-self: center;" src="<?php echo base_url($data["Image"]) ?>" width="40%"  alt="...">
       <div class="card-body">
-        <p class="card-text" style="text-align: justify; margin-top: 5px; padding-left: 10%; padding-right: 10%"><?php echo $data["Description"] ?></p>
+        <p class="card-text" style="text-align: justify; margin-top: 5px; padding-left: 10%; padding-right: 10%"><b><?php echo $data["Description"] ?></b></p>
       </div>
       <br>
-      <a  style="width: 20%;"  href="<?php echo base_url("index.php/User/BookForm?id=$id") ?>" class="container btn btn-primary">Book Now!</a>
+      <a  style="width: 20%;"  href="<?php echo base_url("index.php/User/BookForm?id=$id") ?>" class="container btn btn-dark">Book Now!</a>
       <br>
-      <a style="width: 20%;"  class=" container btn btn-danger" href="<?php echo base_url("index.php/User"); ?>">Back to Listing</a>
+      <a style="width: 20%;"  class="container btn btn-light" href="<?php echo base_url("index.php/User"); ?>">Back to Listing</a>
       <br>
     </div>
     

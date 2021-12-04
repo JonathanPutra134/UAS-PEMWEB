@@ -8,7 +8,7 @@
 
     <style>
         body {
-            background-image: url(https://freight.cargo.site/t/original/i/1b960295851c6f77613ce3aa5a9e441db80f56f8cdb3107c45a84a2f35406376/auditorium11.jpg);
+            background-image: url(https://www.darkfield.london/wp-content/uploads/header-background-hotel-savoy-dark.jpg);
             background-size: cover;
         }
     </style>

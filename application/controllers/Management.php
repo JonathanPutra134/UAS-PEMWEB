@@ -35,7 +35,7 @@ class Management extends CI_Controller{
     public function EditFacilities()
  {
         $id = $_GET["id"];//DAPET ID dari facilities.php
-        $data['header'] = $this->load->view('pages/header.php', NULL, TRUE);
+        $data['header'] = $this->load->view('pagesmanagement/header.php', NULL, TRUE);
         $data['details'] = $this->Model->FacilitiesDetails($id);
         $data['js'] = $this->load->view('include/javascript.php', NULL, TRUE);
         $data['css'] = $this->load->view('include/css.php', NULL, TRUE);

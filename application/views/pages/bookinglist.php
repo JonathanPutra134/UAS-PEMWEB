@@ -16,7 +16,7 @@
 			background-position-y: 30%;
 		}
 	</style>
-  <title>Facilities</title>
+  <title>Booking List</title>
 </head>
 <body>
 	<?php echo $header; ?>

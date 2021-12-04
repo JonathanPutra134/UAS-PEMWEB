@@ -22,7 +22,7 @@
       padding: 0 5px;
     }
   </style>
-  <title>Document</title>
+  <title>Edit User</title>
 </head>
 <body>
 <div class="container d-flex justify-content-sm-center">

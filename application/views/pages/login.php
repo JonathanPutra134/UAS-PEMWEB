@@ -22,7 +22,7 @@
 
 <body>
   <div class="container d-flex justify-content-sm-center position-absolute top-50 start-50 translate-middle">
-    <div class="card bg-light bg-opacity-75" style="width: 30rem; padding: 0 5%;">
+    <div class="card box bg-light bg-opacity-75" style="width: 30rem; padding: 0 5%;">
       <div class="card-body">
         <?php echo form_open('Home/Login'); ?>
           <h2 class="card-title text-center"><b>Welcome Back!</b></h2>

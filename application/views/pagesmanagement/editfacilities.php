@@ -15,7 +15,7 @@
 
   <style>
     body {
-			background-image: url(https://wallpaperforu.com/wp-content/uploads/2021/07/Aesthetic-Black-Wallpaper382048x1152.jpg);
+			background-image: url(https://www.pixel4k.com/wp-content/uploads/2018/11/leaves-plant-green-bush-branches-4k_1541113719.jpg);
 			background-size: cover;
 		}
     .col-6 {
@@ -26,7 +26,7 @@
 </head>
 <body>
 <div class="container d-flex justify-content-sm-center">
-  <div class="card bg-dark text-light bg-opacity-75" style="width: 30rem;">
+  <div class="card bg-dark text-light bg-opacity-75" style="width: 40rem;" data-aos="zoom-in">
     <div class="card-body">
     	<?php echo form_open_multipart("Management/UpdateFacilities?id=$id"); ?>
         <h4><b>Edit Facilities</b></h4>
@@ -60,24 +60,24 @@
           <textarea rows="5" name="Description" class="form-control" id="Description" >
           <?php echo $details['Description']; ?></textarea>
         </div>
-          <div class="mb-3">
-            <label for="StartTime" class="form-label">Start Time</label>
-            <input type="Time" name="StartTime" class="form-control" id="StartTime" value="<?php echo $details['StartTime'];?>">
-            <?php
-            echo "<font color='red'>";
-            echo form_error('StartTime');
-            echo "</font>";
-            ?>
-          </div>
-              <div class="mb-3">
-            <label for="EndTime" class="form-label">End Time</label>
-            <input type="Time" name="EndTime" class="form-control" id="EndTime" value="<?php echo $details['EndTime'];?>">
-            <?php
-            echo "<font color='red'>";
-            echo form_error('EndTime');
-            echo "</font>";
-            ?>
-          </div>
+        <div class="mb-3">
+          <label for="StartTime" class="form-label">Start Time</label>
+          <input type="Time" name="StartTime" class="form-control" id="StartTime" value="<?php # echo $details['StartTime'];?>">
+          <?php
+          echo "<font color='red'>";
+          echo form_error('StartTime');
+          echo "</font>";
+          ?>
+        </div>
+        <div class="mb-3">
+          <label for="EndTime" class="form-label">End Time</label>
+          <input type="Time" name="EndTime" class="form-control" id="EndTime" value="<?php # echo $details['EndTime'];?>">
+          <?php
+          echo "<font color='red'>";
+          echo form_error('EndTime');
+          echo "</font>";
+          ?>
+        </div>
         <div class="row">
           <div class="col-6">
             <button type="submit" name="submit" class="btn btn-dark" style="width: 100%;">Confirm</button>

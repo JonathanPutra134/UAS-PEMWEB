@@ -11,9 +11,8 @@
   
 	<style>
 		body {
-			background-image: url(https://www.darkfield.london/wp-content/uploads/header-background-hotel-savoy-dark.jpg);
+			background-image: url(https://www.pixel4k.com/wp-content/uploads/2018/11/leaves-plant-green-bush-branches-4k_1541113719.jpg);
 			background-size: cover;
-			background-position-y: 30%;
 		}
 	</style>
   <title>Booking List</title>
@@ -22,7 +21,7 @@
 	<?php echo $header; ?>
 
 	<div class="container">
-		<table id="tblMovie" class="table table-striped table-bordered table-dark table-hover table-responsive" cellspacing="0" width="100%">
+		<table id="tblMovie" class="table table-striped table-bordered table-dark table-hover table-responsive" cellspacing="0" width="100%" data-aos="fade-down">
 	    <thead>
 				<tr>
 					<th> # </th>
@@ -59,9 +58,9 @@
 								echo "<a href='" . base_url("index.php/Management/ApproveRequest?id=$id") . "' class='btn btn-success me-1'>Approve</a>";
 								echo "<a href='" . base_url("index.php/Management/RejectRequest?id=$id") . "' class='btn btn-danger'>Reject</a>";
 							} else if($data['status'] == 'REJECTED!') {
-								echo "Request telah direject";
+								echo "Request ditolak.";
 							} else {
-								echo "Request sudah diapprove!";
+								echo "Request diterima.";
 							}
 						echo "</td>";
 					echo "</tr>";   

@@ -12,9 +12,8 @@
 
   <style>
     body {
-      background-image: url(https://www.darkfield.london/wp-content/uploads/header-background-hotel-savoy-dark.jpg);
+      background-image: url(https://www.teahub.io/photos/full/35-352663_wallpaper-leaves-green-plant-aesthetic-nature-background-green.jpg);
       background-size: cover;
-      background-position-y: 30%;
     }
   </style>
   <title>Login to an Account</title>
@@ -22,10 +21,10 @@
 
 <body>
   <div class="container d-flex justify-content-sm-center position-absolute top-50 start-50 translate-middle">
-    <div class="card box bg-light bg-opacity-75" style="width: 30rem; padding: 0 5%;">
+    <div class="card box bg-light bg-opacity-75" style="width: 28rem; padding: 0 2%;" data-aos="zoom-in">
       <div class="card-body">
         <?php echo form_open('Home/Login'); ?>
-          <h2 class="card-title text-center"><b>Welcome Back!</b></h2>
+          <h2 class="card-title text-center mb-3"><b>Welcome Back!</b></h2>
           <div class="mb-3">
             <input type="Email" class="form-control" id="Email" name="Email" placeholder="E-mail">
           </div>

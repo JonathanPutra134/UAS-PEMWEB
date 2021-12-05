@@ -8,7 +8,7 @@
 
     <style>
         body {
-            background-image: url(https://www.darkfield.london/wp-content/uploads/header-background-hotel-savoy-dark.jpg);
+            background-image: url(https://www.teahub.io/photos/full/35-352663_wallpaper-leaves-green-plant-aesthetic-nature-background-green.jpg);
             background-size: cover;
         }
     </style>
@@ -16,7 +16,7 @@
 </head>
 <body>
     <div class="container d-flex justify-content-sm-center position-absolute top-50 start-50 translate-middle">
-        <div class="card bg-light text-center pt-4 pb-4 ps-4 pe-4 bg-opacity-75">
+        <div class="card box bg-light text-center p-4 bg-opacity-75" data-aos="zoom-in">
             <div class="card-body">
                 <h1 class="card-title"><b>Facility Booking</b></h1>
                 <h4 class="card-title mb-5">Welcome to facility booking page</h4>

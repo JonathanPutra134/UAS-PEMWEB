@@ -11,7 +11,7 @@
 
   <style>
     body {
-      background-image: url(https://wallpaperaccess.com/full/658353.jpg);
+      background-image: url(https://www.teahub.io/photos/full/35-352663_wallpaper-leaves-green-plant-aesthetic-nature-background-green.jpg);
       background-size: cover;
     }
   </style>
@@ -20,7 +20,7 @@
 </head>
 <body>
   <div class="container d-flex justify-content-sm-center position-absolute top-50 start-50 translate-middle">
-    <div class="card bg-light bg-opacity-75" style="width: 30rem;">
+    <div class="card bg-light bg-opacity-75" style="width: 30rem;" data-aos="zoom-in">
       <div class="card-body">
         <?php echo form_open_multipart('Home/AddData'); ?>
           <h3 class="text-center"><b>Register</b></h3>

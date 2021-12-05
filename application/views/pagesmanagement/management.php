@@ -11,9 +11,8 @@
   
 	<style>
 		body {
-			background-image: url(https://www.darkfield.london/wp-content/uploads/header-background-hotel-savoy-dark.jpg);
-			background-size: cover;
-			background-position-y: 30%;
+			background-image: url(https://www.pixel4k.com/wp-content/uploads/2018/11/leaves-plant-green-bush-branches-4k_1541113719.jpg);
+			background-size: contain;
 		}
 	</style>
   <title>Facilities</title>
@@ -21,9 +20,9 @@
 <body>
 	<?php echo $header; ?>
 	
-	<div class="container">
+	<div class="container" data-aos="fade-down">
 		<div class="d-grid d-md-flex justify-content-md-end">
-			<a href="<?php echo base_url("index.php/Management/AddFacilitiesPage");?>" class="btn btn-primary mb-2"><i class="bi bi-plus-lg"></i> Add</a>
+			<a href="<?php echo base_url("index.php/Management/AddFacilitiesPage");?>" class="btn btn-light mb-2"><i class="bi bi-plus-lg"></i> Add</a>
 		</div>
 
 		<table id="tblMovie" class="table table-striped table-bordered table-dark table-hover table-responsive" cellspacing="0" width="100%">
@@ -49,7 +48,7 @@
 				
 				//BUTTON DELETE & EDIT
 						echo "<td>";
-							echo "<a href='" . base_url("index.php/Management/EditFacilities?id=$id") . "' class='btn btn-primary me-1'>Edit</a>";
+							echo "<a href='" . base_url("index.php/Management/EditFacilities?id=$id") . "' class='btn btn-secondary me-1'>Edit</a>";
 							echo "<a href='" . base_url("index.php/Management/DeleteFacilities?id=$id") . "' class='btn btn-danger'>Delete</a>";
 						echo "</td>";
 					echo "</tr>";

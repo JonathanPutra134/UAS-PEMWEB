@@ -11,9 +11,8 @@
   
 	<style>
 		body {
-			background-image: url(https://www.darkfield.london/wp-content/uploads/header-background-hotel-savoy-dark.jpg);
+			background-image: url(https://www.teahub.io/photos/full/63-636781_wallpaper-leaves-branch-dark-green-glossy-plant-dark.jpg);
 			background-size: cover;
-			background-position-y: 30%;
 		}
 	</style>
   <title>Booking List</title>
@@ -22,7 +21,7 @@
 	<?php echo $header; ?>
 
 	<div class="container">
-		<table id="tblMovie" class="table table-striped table-bordered table-dark table-hover table-responsive" cellspacing="0" width="100%">
+		<table id="tblMovie" class="table table-striped table-bordered table-dark table-hover table-responsive" cellspacing="0" width="100%" data-aos="fade-down">
 	    <thead>
 				<tr>
 					<th> # </th>

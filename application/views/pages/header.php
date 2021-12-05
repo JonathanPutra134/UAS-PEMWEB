@@ -25,7 +25,7 @@
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <?php echo $_SESSION['loggedInAccount']['Name'];?>
                     </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
                         <!-- TOMBOL SIGN OUT -->
                         <li><a class="dropdown-item" href="<?php echo base_url("index.php/Home/logout") ?>">Log Out</a></li>
                     </ul>

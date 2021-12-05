@@ -1,4 +1,4 @@
-<nav class="box navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
     <div class="container-fluid" style="padding: 0 5%;">
     <?php
         $UserID = $_SESSION['loggedInAccount']['id_user']; 
@@ -26,9 +26,9 @@
                     <a class=" nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <?php echo $_SESSION['loggedInAccount']['Name'];?>
                     </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
                         <!-- TOMBOL SIGN OUT -->
-                        <li class="bg-secondary"><a class=" lamp text-center text-dark dropdown-item" href="<?php echo base_url("index.php/Home/logout") ?>">Log Out</a></li>
+                        <li><a class="dropdown-item" href="<?php echo base_url("index.php/Home/logout") ?>">Log Out</a></li>
                     </ul>
                 </li>
             </div>

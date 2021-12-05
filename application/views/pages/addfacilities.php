@@ -12,7 +12,7 @@
   
   <style>
     body {
-			background-image: url(https://wallpaperforu.com/wp-content/uploads/2021/07/Aesthetic-Black-Wallpaper382048x1152.jpg);
+			background-image: url(https://www.teahub.io/photos/full/63-636781_wallpaper-leaves-branch-dark-green-glossy-plant-dark.jpg);
 			background-size: cover;
 		}
     .col-6 {
@@ -23,7 +23,7 @@
 </head>
 <body>
   <div class="container d-flex justify-content-sm-center">
-    <div class="card bg-dark text-light bg-opacity-75" style="width: 30rem;">
+    <div class="card bg-dark text-light bg-opacity-75" style="width: 30rem;" data-aos="zoom-in">
       <div class="card-body">
         <h4><b>Add Facilities</b></h4>
         <?php echo form_open_multipart('Admin/AddFacilities'); ?> 

@@ -14,9 +14,8 @@
 
   <style>
     body {
-			background-image: url(https://wallpaperforu.com/wp-content/uploads/2021/07/Aesthetic-Black-Wallpaper382048x1152.jpg);
+			background-image: url(https://www.teahub.io/photos/full/63-636781_wallpaper-leaves-branch-dark-green-glossy-plant-dark.jpg);
 			background-size: cover;
-      background-position-y: 30%;
 		}
     .col-6 {
       padding: 0 5px;
@@ -26,7 +25,7 @@
 </head>
 <body>
 <div class="container d-flex justify-content-sm-center">
-  <div class="card bg-dark text-light bg-opacity-75" style="width: 30rem;">
+  <div class="card bg-dark text-light bg-opacity-75" style="width: 30rem;" data-aos="zoom-in">
     <div class="card-body">
     	<?php echo form_open_multipart("Admin/UpdateUser?id=$id"); ?>
         <h4><b>Edit data</b></h4>
@@ -60,11 +59,10 @@
         </div>
         <div class="row">
           <div class="col-6">
-            <button type="submit" name="submit" class="btn btn-dark" style="width: 100%;">edit</button>
+            <button type="submit" name="submit" class="btn btn-dark" style="width: 100%;">Edit</button>
           </div>
           <div class="col-6">
             <a class="btn btn-secondary" style="width: 100%;" href="<?php echo base_url("index.php/Admin");?>">Back</a>
-        
           </div>
         </div>
       </form>

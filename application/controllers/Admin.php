@@ -140,7 +140,7 @@ class Admin extends CI_Controller{
         $data['css'] = $this->load->view('include/css.php', NULL, TRUE);
         $this->load->view('pages/edit.php', $data);
 }
-public function UpdateUser()
+public function UpdateUser()//MASIH ERROR
 {
  
      $id = $_GET["id"];//DAPET ID dari editfacilities.php
@@ -151,14 +151,14 @@ public function UpdateUser()
         'rules' => 'required',
         "errors" => ["required" => "Tolong masukkan nama!"]
       ),
-            array(
+        array(
         'field' => 'Email',
         'label' => 'Email',
         'rules' => ['required', 'valid_email'],
         "errors" => ["valid_email" => "Please enter an valid email!",
                     "required" => "Tolong masukkan emaiL!"
                     ]
-            )
+         )
 
 	    
     );
@@ -179,8 +179,6 @@ public function UpdateUser()
       
     
      if($this->form_validation->run() != false && $status){ //jika validation benar
-      echo "haha";
-   
        $Name = $this->input->post('Name');
        $Email = $this->input->post('Email');
        if(empty($ProfilePicture)){

@@ -61,7 +61,7 @@
         </div>
         <div class="mb-3">
           <label for="StartTime" class="form-label">Start Time</label>
-          <input type="Time" name="StartTime" class="form-control" id="StartTime" value="<?php # echo $details['StartTime'];?>">
+          <input type="Time" name="StartTime" class="form-control" id="StartTime" value="<?php  echo $details['StartTime'];?>">
           <?php
             echo "<font color='red'>";
             echo form_error('StartTime');
@@ -70,7 +70,7 @@
         </div>
         <div class="mb-3">
             <label for="EndTime" class="form-label">End Time</label>
-            <input type="Time" name="EndTime" class="form-control" id="EndTime" value="<?php # echo $details['EndTime'];?>">
+            <input type="Time" name="EndTime" class="form-control" id="EndTime" value="<?php  echo $details['EndTime'];?>">
             <?php
               echo "<font color='red'>";
               echo form_error('EndTime');

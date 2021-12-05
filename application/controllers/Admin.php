@@ -142,7 +142,7 @@ class Admin extends CI_Controller{
 }
 public function UpdateUser()
 {
-   $this->Model->CheckAdmin();
+ 
      $id = $_GET["id"];//DAPET ID dari editfacilities.php
       $rules = array(
         array(
@@ -158,57 +158,45 @@ public function UpdateUser()
         "errors" => ["valid_email" => "Please enter an valid email!",
                     "required" => "Tolong masukkan emaiL!"
                     ]
-            ),
-            array(
-        'field' => 'Password',
-        'label' => 'Name',
-        'rules' => 'required',
-        "errors" => ["required" => "Tolong masukkan Password!"]
-      )
+            )
 
-           
-       
-    
 	    
     );
-       $config['upload_path'] = './assets/images';
+     $config['upload_path'] = './assets/images';
 	   $config['allowed_types'] = 'jpg|png|jpeg';
 	   $config['max_size'] = '5000';
-       $this->load->library('upload', $config);
-
-       $this->form_validation->set_rules($rules);
-       $status = $this->upload->do_upload("ProfilePicture");
-         $data['error'] = $this->upload->display_errors();
-       $query = $this->db->query("SELECT ProfilePicture from user WHERE id_user = '$id'");
-       $query = $query->row_array();
+     $this->load->library('upload', $config);
+     $this->form_validation->set_rules($rules);
+    $status = $this->upload->do_upload("ProfilePicture");
+    $data['error'] = $this->upload->display_errors();
+    $query = $this->db->query("SELECT ProfilePicture from user WHERE id_user = '$id'");
+    $query = $query->row_array();
       if ($status == 0 && $data['error'] == "<p>You did not select a file to upload.</p>") {
             $ProfilePicture = $query['ProfilePicture'];
-        
+          
             $status = 1;
-      }
-
-    //di controller ini harusnya ada library 'form_validation' + 'uploading_file'
+       }
+      
     
-    
-
      if($this->form_validation->run() != false && $status){ //jika validation benar
-     
+      echo "haha";
+   
        $Name = $this->input->post('Name');
        $Email = $this->input->post('Email');
        if(empty($ProfilePicture)){
        $ProfilePicture = $this->upload->data();
        $ProfilePicture = "assets/images/" . $ProfilePicture['file_name']; 
        }
+       
        $this->Model->UpdateUser($id, $Name, $Email, $ProfilePicture);
-      
-        redirect("Admin");
+       redirect("Admin");
     }else { //jika ada data yang tidak valid
         $data['user'] = $this->Model->UserDetails($id);
         $data['header'] = $this->load->view('pages/header.php', NULL, TRUE);
         $data['js'] = $this->load->view('include/javascript.php', NULL, TRUE);
         $data['css'] = $this->load->view('include/css.php', NULL, TRUE);
-      
-        $this->load->view('pages/edit.php', $data);
+        
+        $this->load->view('pages/edit.php', $data); 
 
     }
  }

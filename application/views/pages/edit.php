@@ -60,10 +60,11 @@
         </div>
         <div class="row">
           <div class="col-6">
-            <button type="submit" name="submit" class="btn btn-dark" style="width: 100%;">Register</button>
+            <button type="submit" name="submit" class="btn btn-dark" style="width: 100%;">edit</button>
           </div>
           <div class="col-6">
             <a class="btn btn-secondary" style="width: 100%;" href="<?php echo base_url("index.php/Admin");?>">Back</a>
+        
           </div>
         </div>
       </form>

@@ -98,6 +98,7 @@ public function loginAuthentication($email, $password) {
      }
      public function FacilitiesDetails($id){ //SHOW Facilities di admin
          $query = $this->db->query("SELECT * FROM facilities WHERE id_facilities = $id");
+         
         return $query->result_array();
      }
       public function UserDetails($id){ //SHOW Facilities di admin

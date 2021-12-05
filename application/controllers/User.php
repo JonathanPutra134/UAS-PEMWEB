@@ -82,7 +82,7 @@ class User extends CI_Controller
                 'field' => 'ReservationDate',
                 'label' => 'Date',
                 'rules' => 'required|callback_date_valid',
-                 'errors' => ["required" => "Reservation date must be required", "date_valid" => "Tidak bisa membuat reservasi di waktu yang sudah berlalu!/Reservasi tidak boleh kosong!"]
+                 'errors' => ["required" => "Reservation date must be required", "date_valid" => "Maaf Reservasi tidak bisa dilakukan hari ini, minimal 1 hari sebelum booking atau tanggal yang kamu masukkan sudah berlalu atau kosong!"]
             ),
             array(
                 'field' => 'StartTime',
@@ -128,7 +128,7 @@ class User extends CI_Controller
         
     }
     public function date_valid() {
-   return (strtotime(implode("-", explode("/", $_POST['ReservationDate']))) < strtotime("now")) ? false : true;
+   return (strtotime(implode("-", explode("/", $_POST['ReservationDate']))) <= strtotime("now")) ? false : true;
  }
 
 }
